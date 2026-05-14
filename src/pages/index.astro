@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import HeroSection from '../components/sections/HeroSection.astro';
+import PainPointsSection from '../components/sections/PainPointsSection.astro';
+import AutomationAreasSection from '../components/sections/AutomationAreasSection.astro';
+import AudienceFitSection from '../components/sections/AudienceFitSection.astro';
+import CompetitiveTriggerSection from '../components/sections/CompetitiveTriggerSection.astro';
+import CasesSection from '../components/sections/CasesSection.astro';
+import ProcessSection from '../components/sections/ProcessSection.astro';
+import EntryOfferSection from '../components/sections/EntryOfferSection.astro';
+import AboutSection from '../components/sections/AboutSection.astro';
+import WorkFormatsSection from '../components/sections/WorkFormatsSection.astro';
+import FAQSection from '../components/sections/FAQSection.astro';
+import FinalCTASection from '../components/sections/FinalCTASection.astro';
+
+const title = "Артём Степанов | ИИ и автоматизация бизнес-процессов";
+const description = "Помогаю бизнесу навести порядок в заявках, поддержке, документах и повторяющихся задачах. Инженерный подход к автоматизации.";
+---
+
+<Layout title={title} description={description}>
+  <Header />
+  
+  <main>
+    <HeroSection />
+    <PainPointsSection />
+    <AutomationAreasSection />
+    <AudienceFitSection />
+    <CompetitiveTriggerSection />
+    <CasesSection />
+    <ProcessSection />
+    <EntryOfferSection />
+    <AboutSection />
+    <WorkFormatsSection />
+    <FAQSection />
+    <FinalCTASection />
+  </main>
+
+  <Footer />
+</Layout>

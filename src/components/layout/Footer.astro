@@ -1,0 +1,18 @@
+---
+import { contacts } from '../../config/content';
+---
+
+<footer class="py-12 md:py-16 w-full max-w-[1200px] mx-auto px-5 lg:px-8 border-t border-border mt-16 md:mt-32">
+  <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+    <div>
+      <div class="text-lg font-semibold text-text-main mb-2">Артём Степанов</div>
+      <div class="text-text-muted text-sm">&copy; {new Date().getFullYear()} Все права защищены.</div>
+    </div>
+    
+    <div class="flex flex-col md:flex-row gap-4 md:gap-8">
+      <a href={contacts.telegram} class="text-text-secondary hover:text-text-main transition-colors text-sm">Telegram</a>
+      <a href={contacts.max} class="text-text-secondary hover:text-text-main transition-colors text-sm">MAX-система</a>
+      <a href={`tel:${contacts.phone.replace(/[^+\d]/g, '')}`} class="text-text-secondary hover:text-text-main transition-colors text-sm">{contacts.phone}</a>
+    </div>
+  </div>
+</footer>

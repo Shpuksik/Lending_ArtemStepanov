@@ -1,0 +1,25 @@
+---
+import Button from '../ui/Button.astro';
+import { contacts } from '../../config/content';
+---
+
+<section class="py-16 md:py-32 w-full bg-surface border-y border-border">
+  <div class="max-w-[1200px] mx-auto px-5 lg:px-8 text-center max-w-2xl mx-auto">
+    <h2 class="text-2xl md:text-4xl font-medium mb-6 text-text-main">Готовы навести порядок?</h2>
+    
+    <p class="text-base md:text-lg text-text-secondary leading-relaxed mb-10">
+      Если в вашем бизнесе есть ручная рутина и процессы, которые отнимают слишком много времени — их стоит хотя бы разобрать. Напишите мне, и мы обсудим вашу задачу.
+    </p>
+    
+    <div class="flex flex-col items-center gap-6">
+      <Button href={contacts.telegram} variant="primary" class="w-full sm:w-auto text-base">
+        Написать в Telegram
+      </Button>
+      
+      <div class="flex flex-col sm:flex-row gap-4 sm:gap-8 text-sm">
+        <a href={contacts.max} class="text-text-secondary hover:text-text-main transition-colors">Система MAX</a>
+        <a href={`tel:${contacts.phone.replace(/[^+\d]/g, '')}`} class="text-text-secondary hover:text-text-main transition-colors">{contacts.phone}</a>
+      </div>
+    </div>
+  </div>
+</section>

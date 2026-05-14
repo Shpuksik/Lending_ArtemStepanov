@@ -1,0 +1,25 @@
+---
+import Button from '../ui/Button.astro';
+import { entryOffer, contacts } from '../../config/content';
+---
+
+<section class="py-16 md:py-24 max-w-[1200px] mx-auto px-5 lg:px-8">
+  <div class="bg-card border border-accent/20 rounded-2xl p-8 md:p-12 text-center max-w-4xl mx-auto relative overflow-hidden">
+    <!-- Subtle glow -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-[radial-gradient(ellipse_at_center,rgba(56,189,248,0.05),transparent_50%)] pointer-events-none"></div>
+    
+    <div class="relative z-10">
+      <h2 class="text-2xl md:text-4xl font-medium mb-6 text-text-main">{entryOffer.title}</h2>
+      
+      <div class="space-y-4 mb-10 text-base md:text-lg text-text-secondary text-left md:text-center">
+        <p>{entryOffer.explanation}</p>
+        <p><span class="text-text-main font-medium">Что нужно от вас:</span> {entryOffer.needed}</p>
+        <p><span class="text-text-main font-medium">Что вы получите:</span> {entryOffer.result}</p>
+      </div>
+      
+      <Button href={contacts.telegram} variant="primary" class="w-full sm:w-auto text-base">
+        Назначить встречу
+      </Button>
+    </div>
+  </div>
+</section>
