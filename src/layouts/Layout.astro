@@ -1,5 +1,6 @@
 ---
 import '../styles/globals.css';
+import ScrollReveal from '../components/motion/ScrollReveal.astro';
 
 interface Props {
   title: string;
@@ -30,5 +31,6 @@ const { title, description } = Astro.props;
   </head>
   <body class="min-h-screen flex flex-col">
     <slot />
+    <ScrollReveal />
   </body>
 </html>

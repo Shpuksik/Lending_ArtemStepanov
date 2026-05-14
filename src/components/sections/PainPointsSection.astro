@@ -3,15 +3,15 @@ import { painPoints } from '../../config/content';
 ---
 
 <section class="py-16 md:py-24 max-w-[1200px] mx-auto px-5 lg:px-8">
-  <div class="max-w-3xl">
+  <div class="max-w-3xl" data-reveal>
     <h2 class="text-2xl md:text-4xl font-medium mb-6 text-text-main">Где бизнес теряет время каждый день</h2>
     <p class="text-base md:text-lg text-text-secondary mb-10">
       Чем больше заявок и клиентов, тем сложнее управлять процессами вручную. Возникают узкие места, которые тормозят рост и отнимают ресурс команды.
     </p>
     
-    <ul class="space-y-4 md:space-y-5">
+    <ul class="space-y-4 md:space-y-5" data-reveal-group>
       {painPoints.map((point) => (
-        <li class="flex items-start">
+        <li class="flex items-start" data-reveal-item>
           <span class="text-accent mr-4 mt-1 opacity-70 flex-shrink-0">—</span>
           <span class="text-base md:text-lg text-text-main">{point}</span>
         </li>

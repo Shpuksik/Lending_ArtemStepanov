@@ -3,10 +3,10 @@ import { audienceFit } from '../../config/content';
 ---
 
 <section class="py-16 md:py-24 max-w-[1200px] mx-auto px-5 lg:px-8">
-  <h2 class="text-2xl md:text-4xl font-medium mb-12 text-text-main">Кому будет полезен этот подход</h2>
+  <h2 class="text-2xl md:text-4xl font-medium mb-12 text-text-main" data-reveal>Кому будет полезен этот подход</h2>
   
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-    <div>
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16" data-reveal-group>
+    <div data-reveal-item>
       <h3 class="text-xl font-medium text-text-main mb-6">Подходит, если:</h3>
       <ul class="space-y-4">
         {audienceFit.fits.map(item => (
@@ -18,7 +18,7 @@ import { audienceFit } from '../../config/content';
       </ul>
     </div>
     
-    <div>
+    <div data-reveal-item>
       <h3 class="text-xl font-medium text-text-main mb-6">Не подходит, если:</h3>
       <ul class="space-y-4">
         {audienceFit.doesNotFit.map(item => (

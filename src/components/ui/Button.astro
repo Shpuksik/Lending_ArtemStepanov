@@ -7,10 +7,10 @@ interface Props {
 
 const { href, variant = 'primary', class: className = '' } = Astro.props;
 
-const baseStyles = "inline-flex items-center justify-center font-medium rounded-lg transition-colors duration-200 px-6 min-h-[48px]";
+const baseStyles = "inline-flex items-center justify-center font-medium rounded-lg transition-all duration-[150ms] ease-out px-6 min-h-[48px] hover:-translate-y-[1px]";
 const variants = {
   primary: "bg-accent hover:bg-accent-hover text-button-text",
-  secondary: "bg-transparent border border-border text-text-main hover:bg-white/5"
+  secondary: "bg-transparent border border-border text-text-main hover:bg-white/[0.02] hover:border-text-muted"
 };
 
 const Element = href ? 'a' : 'button';

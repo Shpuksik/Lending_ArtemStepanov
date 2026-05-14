@@ -6,6 +6,6 @@ interface Props {
 const { class: className = '' } = Astro.props;
 ---
 
-<div class={`bg-card border border-border rounded-2xl p-6 md:p-8 hover:border-[#3F3F46] transition-colors duration-200 ${className}`}>
+<div class={`bg-card border border-border rounded-2xl p-6 md:p-8 hover:border-[#4F4F56] hover:bg-white/[0.02] hover:-translate-y-[2px] transition-all duration-[200ms] ease-out ${className}`}>
   <slot />
 </div>

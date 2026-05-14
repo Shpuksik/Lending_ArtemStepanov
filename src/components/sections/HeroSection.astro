@@ -6,15 +6,15 @@ import { hero } from '../../config/content';
 <section class="py-16 md:py-32 max-w-[1200px] mx-auto px-5 lg:px-8 flex flex-col items-start relative">
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(56,189,248,0.1),transparent_50%)] pointer-events-none"></div>
   
-  <div class="max-w-3xl relative z-10">
-    <h1 class="text-3xl md:text-5xl lg:text-6xl font-medium leading-[1.2] md:leading-[1.2] tracking-tight mb-6 text-text-main">
+  <div class="max-w-3xl relative z-10" data-reveal-group>
+    <h1 data-reveal-item class="text-3xl md:text-5xl lg:text-6xl font-medium leading-[1.2] md:leading-[1.2] tracking-tight mb-6 text-text-main">
       {hero.h1}
     </h1>
-    <p class="text-base md:text-lg text-text-secondary leading-relaxed mb-10 max-w-2xl">
+    <p data-reveal-item class="text-base md:text-lg text-text-secondary leading-relaxed mb-10 max-w-2xl">
       {hero.subtitle}
     </p>
     
-    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-4 w-full sm:w-auto">
+    <div data-reveal-item class="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-4 w-full sm:w-auto">
       <Button href="#contacts" variant="primary" class="w-full sm:w-auto text-base">
         Обсудить задачу
       </Button>
@@ -22,6 +22,6 @@ import { hero } from '../../config/content';
         Узнать форматы работы
       </Button>
     </div>
-    <p class="text-sm text-text-muted">{hero.microtext}</p>
+    <p data-reveal-item class="text-sm text-text-muted">{hero.microtext}</p>
   </div>
 </section>
