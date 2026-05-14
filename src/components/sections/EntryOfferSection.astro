@@ -1,6 +1,6 @@
 ---
 import Button from '../ui/Button.astro';
-import { entryOffer, contacts } from '../../config/content';
+import { entryOffer } from '../../config/content';
 ---
 
 <section class="py-16 md:py-24 max-w-[1200px] mx-auto px-5 lg:px-8">
@@ -17,7 +17,7 @@ import { entryOffer, contacts } from '../../config/content';
         <p><span class="text-text-main font-medium">Что вы получите:</span> {entryOffer.result}</p>
       </div>
       
-      <Button href={contacts.telegram} variant="primary" class="w-full sm:w-auto text-base">
+      <Button href="#contacts" variant="primary" class="w-full sm:w-auto text-base">
         Назначить встречу
       </Button>
     </div>

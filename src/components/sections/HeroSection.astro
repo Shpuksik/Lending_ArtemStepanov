@@ -1,6 +1,6 @@
 ---
 import Button from '../ui/Button.astro';
-import { hero, contacts } from '../../config/content';
+import { hero } from '../../config/content';
 ---
 
 <section class="py-16 md:py-32 max-w-[1200px] mx-auto px-5 lg:px-8 flex flex-col items-start relative">
@@ -15,7 +15,7 @@ import { hero, contacts } from '../../config/content';
     </p>
     
     <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-4 w-full sm:w-auto">
-      <Button href={contacts.telegram} variant="primary" class="w-full sm:w-auto text-base">
+      <Button href="#contacts" variant="primary" class="w-full sm:w-auto text-base">
         Обсудить задачу
       </Button>
       <Button href="#formats" variant="secondary" class="w-full sm:w-auto text-base">
