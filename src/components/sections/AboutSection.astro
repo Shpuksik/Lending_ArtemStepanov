@@ -4,9 +4,12 @@ import { about } from '../../config/content';
 
 <section class="py-16 md:py-24 max-w-[1200px] mx-auto px-5 lg:px-8">
   <div class="max-w-3xl" data-reveal>
-    <div class="text-accent text-5xl md:text-7xl font-bold mb-6 opacity-90 tracking-tighter">15</div>
+    <div class="flex items-baseline gap-4 mb-8">
+      <div class="text-accent text-6xl md:text-[80px] font-bold opacity-90 tracking-tighter leading-none">15</div>
+      <div class="text-xl md:text-3xl font-medium text-text-main leading-tight">лет инженерного подхода<br class="hidden md:block"/> к сложным процессам</div>
+    </div>
     
-    <div class="space-y-6 text-base md:text-lg text-text-secondary">
+    <div class="space-y-6 text-[16px] md:text-[18px] text-text-secondary leading-relaxed">
       {about.text.map((paragraph) => (
         <p>{paragraph}</p>
       ))}

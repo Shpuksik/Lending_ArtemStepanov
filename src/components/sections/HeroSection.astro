@@ -3,14 +3,14 @@ import Button from '../ui/Button.astro';
 import { hero } from '../../config/content';
 ---
 
-<section class="py-16 md:py-32 max-w-[1200px] mx-auto px-5 lg:px-8 flex flex-col items-start relative">
+<section class="py-16 lg:py-24 max-w-[1200px] mx-auto px-5 lg:px-8 flex flex-col lg:flex-row items-center lg:items-start gap-12 lg:gap-16 relative">
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(56,189,248,0.1),transparent_50%)] pointer-events-none"></div>
   
-  <div class="max-w-3xl relative z-10" data-reveal-group>
-    <h1 data-reveal-item class="text-3xl md:text-5xl lg:text-6xl font-medium leading-[1.2] md:leading-[1.2] tracking-tight mb-6 text-text-main">
+  <div class="flex-1 max-w-3xl relative z-10" data-reveal-group>
+    <h1 data-reveal-item class="text-[38px] md:text-[44px] lg:text-[64px] font-medium leading-[1.05] tracking-tight mb-6 text-text-main">
       {hero.h1}
     </h1>
-    <p data-reveal-item class="text-base md:text-lg text-text-secondary leading-relaxed mb-10 max-w-2xl">
+    <p data-reveal-item class="text-[16px] md:text-[18px] lg:text-[20px] text-text-secondary leading-relaxed mb-10 max-w-2xl">
       {hero.subtitle}
     </p>
     
@@ -23,5 +23,16 @@ import { hero } from '../../config/content';
       </Button>
     </div>
     <p data-reveal-item class="text-sm text-text-muted">{hero.microtext}</p>
+  </div>
+
+  <div class="hidden lg:flex flex-col bg-card border border-border rounded-xl p-8 shrink-0 w-[380px]" data-reveal-item>
+    <div class="text-[13px] font-medium text-text-main mb-6 border border-border bg-surface inline-block px-3 py-1 rounded-md w-max opacity-80">15 лет инженерного опыта</div>
+    <h3 class="text-[18px] font-medium text-text-main mb-4">Что обычно разбираем:</h3>
+    <ul class="space-y-3 text-[15px] text-text-secondary">
+      <li class="flex items-start"><span class="text-text-muted mr-3">—</span>входящие заявки;</li>
+      <li class="flex items-start"><span class="text-text-muted mr-3">—</span>поддержку и типовые вопросы;</li>
+      <li class="flex items-start"><span class="text-text-muted mr-3">—</span>документы и знания компании;</li>
+      <li class="flex items-start"><span class="text-text-muted mr-3">—</span>повторяющиеся действия команды.</li>
+    </ul>
   </div>
 </section>

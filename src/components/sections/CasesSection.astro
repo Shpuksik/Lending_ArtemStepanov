@@ -9,9 +9,12 @@ import { cases } from '../../config/content';
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-6" data-reveal-group>
     {cases.map((c) => (
       <Card class="flex flex-col" data-reveal-item>
-        <h3 class="text-lg font-medium text-text-main mb-6 pb-4 border-b border-border">{c.title}</h3>
+        <div class="mb-4">
+          <span class="text-[12px] font-medium uppercase tracking-wider text-accent border border-accent/20 bg-accent/5 px-2 py-1 rounded">Кейс</span>
+        </div>
+        <h3 class="text-[18px] font-medium text-text-main mb-6 pb-4 border-b border-border/50">{c.title}</h3>
         
-        <div class="space-y-4 flex-grow text-sm md:text-base">
+        <div class="space-y-4 flex-grow text-[15px]">
           <div>
             <span class="text-text-muted font-medium block mb-1">Контекст:</span>
             <span class="text-text-secondary">{c.context}</span>
