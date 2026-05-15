@@ -1,6 +1,6 @@
 export const contacts = {
   telegram: "https://t.me/stepanov_aii",
-  max: "https://vk.cc/cW3jVt",
+  max: "https://max.ru/u/f9LHodD0cOJ9oEbreWXLXbEEVU5O8NVj8hdw2LP4kZQagxnpCk_xXLkkWxs",
   phone: "+7 982 815 47 79"
 };
 
