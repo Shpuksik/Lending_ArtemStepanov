@@ -46,7 +46,7 @@ import { contacts } from '../../config/content';
         
         <div class="flex flex-col gap-1.5">
           <label for="phone" class="text-[13px] text-text-secondary">Телефон <span class="text-accent">*</span></label>
-          <input type="tel" id="phone" name="phone" inputmode="tel" autocomplete="tel" required class="bg-surface border border-border rounded-lg px-4 py-2.5 text-[15px] text-text-main focus:outline-none focus:border-accent/40 transition-colors" placeholder="+7 999 123-45-67" />
+          <input type="tel" id="phone" name="phone" inputmode="numeric" autocomplete="tel" pattern="[0-9]*" required class="bg-surface border border-border rounded-lg px-4 py-2.5 text-[15px] text-text-main focus:outline-none focus:border-accent/40 transition-colors" placeholder="79991234567" />
         </div>
         
         <div class="flex flex-col gap-1.5">
@@ -75,6 +75,14 @@ import { contacts } from '../../config/content';
     const submitBtn = form?.querySelector('button[type="submit"]') as HTMLButtonElement | null;
     
     if (!form || !statusDiv || !submitBtn) return;
+    
+    const phoneInput = document.getElementById('phone') as HTMLInputElement | null;
+    if (phoneInput) {
+      phoneInput.addEventListener('input', () => {
+        let val = phoneInput.value.replace(/\D/g, "");
+        phoneInput.value = val.slice(0, 11);
+      });
+    }
     
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
