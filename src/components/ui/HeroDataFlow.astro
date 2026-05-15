@@ -3,72 +3,145 @@
 ---
 <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden" aria-hidden="true">
   
-  <!-- Right edge fade -->
-  <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-bg to-transparent z-10"></div>
-  <!-- Top/Bottom fades -->
-  <div class="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-bg to-transparent z-10"></div>
-  <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-bg to-transparent z-10"></div>
+  <div class="absolute inset-0 mask-gradient flex items-center justify-end transform md:translate-x-[10%]">
+    
+    <!-- DESKTOP SVG -->
+    <svg class="hidden md:block w-full h-[900px] min-w-[1200px] object-cover opacity-100" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="glow-desktop" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="8" result="blur" />
+          <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+        <filter id="heavy-blur-1">
+          <feGaussianBlur stdDeviation="40" />
+        </filter>
+        <filter id="heavy-blur-2">
+          <feGaussianBlur stdDeviation="60" />
+        </filter>
+      </defs>
 
-  <!-- The SVG container with a mask to fade out the lines behind the text on the left -->
-  <div 
-    class="absolute inset-0 flex items-center justify-end transform translate-x-[10%] md:translate-x-[20%]"
-    style="-webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 10%, black 50%, black 100%); mask-image: linear-gradient(to right, transparent 0%, transparent 10%, black 50%, black 100%);"
-  >
-    <!-- SVG Data Flow -->
-    <svg class="w-[1000px] h-[800px] md:w-[1400px] md:h-[900px] flex-shrink-0 opacity-40 md:opacity-100" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg">
-      
-      <g opacity="0.15" class="data-lines">
-        <!-- Main horizontal-ish flowing lines -->
-        <path d="M-100,450 C300,450 500,200 900,250 C1200,287 1500,100 1500,100" stroke="#38BDF8" stroke-width="1.5" />
-        <path d="M-100,500 C400,500 600,750 1000,700 C1300,650 1500,500 1500,500" stroke="#38BDF8" stroke-width="1" />
-        <path d="M-100,400 C400,350 700,100 1100,150 C1300,175 1500,350 1500,350" stroke="#38BDF8" stroke-width="1.5" />
-        <path d="M100,550 C400,550 800,850 1200,750 C1400,700 1500,850 1500,850" stroke="#38BDF8" stroke-width="1" />
-        <path d="M-100,475 C450,475 750,475 1500,475" stroke="#38BDF8" stroke-width="0.5" />
+      <!-- Flow Ribbons (Wide, cyan glow) -->
+      <g opacity="0.9">
+        <path d="M-200,600 C300,650 500,200 1100,250 C1300,266 1600,150 1600,150" stroke="#38BDF8" stroke-width="80" filter="url(#heavy-blur-1)" opacity="0.15" />
+        <path d="M-200,750 C400,700 700,800 1200,600 C1400,500 1600,450 1600,450" stroke="#38BDF8" stroke-width="140" filter="url(#heavy-blur-2)" opacity="0.12" />
+      </g>
+
+      <!-- 3-5 Crisp Lines -->
+      <g opacity="0.6" class="desktop-lines">
+        <path d="M-200,600 C300,650 500,200 1100,250 C1300,266 1600,150 1600,150" stroke="#38BDF8" stroke-width="1.5" />
+        <path d="M-200,680 C400,680 600,350 1000,450 C1300,525 1600,300 1600,300" stroke="#38BDF8" stroke-width="1" />
+        <path d="M-200,750 C400,700 700,800 1200,600 C1400,500 1600,450 1600,450" stroke="#38BDF8" stroke-width="1.5" />
+        <path d="M200,800 C500,800 800,950 1300,750 C1500,690 1600,800 1600,800" stroke="#38BDF8" stroke-width="1" />
         
-        <!-- Abstract connections (network edges) -->
-        <path d="M500,200 C600,350 550,600 600,750" stroke="#38BDF8" stroke-width="0.5" />
-        <path d="M900,250 C1000,400 950,550 1000,700" stroke="#38BDF8" stroke-width="0.5" />
-        <path d="M1100,150 C1150,300 1100,500 1200,750" stroke="#38BDF8" stroke-width="0.5" />
+        <!-- Connecting branches (Data merging) -->
+        <path d="M600,200 C700,400 650,650 700,800" stroke="#38BDF8" stroke-width="0.5" stroke-dasharray="4 6" opacity="0.7" />
+        <path d="M1000,250 C1100,450 1050,650 1200,600" stroke="#38BDF8" stroke-width="0.5" stroke-dasharray="4 6" opacity="0.7" />
+        <path d="M800,225 C850,300 850,400 1000,450" stroke="#38BDF8" stroke-width="0.5" stroke-dasharray="4 6" opacity="0.7" />
       </g>
 
-      <!-- Animated pulses overlaid on the main paths -->
-      <g class="data-pulses" opacity="0.8">
-        <path d="M-100,450 C300,450 500,200 900,250 C1200,287 1500,100 1500,100" stroke="#38BDF8" stroke-width="2" class="pulse-line pulse-1" style="--path-len: 2000;" />
-        <path d="M-100,500 C400,500 600,750 1000,700 C1300,650 1500,500 1500,500" stroke="#38BDF8" stroke-width="2" class="pulse-line pulse-2" style="--path-len: 2000;" />
-        <path d="M-100,400 C400,350 700,100 1100,150 C1300,175 1500,350 1500,350" stroke="#38BDF8" stroke-width="2" class="pulse-line pulse-3" style="--path-len: 2000;" />
-        <path d="M100,550 C400,550 800,850 1200,750 C1400,700 1500,850 1500,850" stroke="#38BDF8" stroke-width="1.5" class="pulse-line pulse-4" style="--path-len: 2000;" />
+      <!-- Moving Impulses -->
+      <g filter="url(#glow-desktop)" opacity="1">
+        <path d="M-200,600 C300,650 500,200 1100,250 C1300,266 1600,150 1600,150" stroke="#38BDF8" stroke-width="3" fill="none" class="pulse-desktop d-pulse-1" style="--d-len: 2200;" />
+        <path d="M-200,680 C400,680 600,350 1000,450 C1300,525 1600,300 1600,300" stroke="#38BDF8" stroke-width="3" fill="none" class="pulse-desktop d-pulse-2" style="--d-len: 2200;" />
+        <path d="M-200,750 C400,700 700,800 1200,600 C1400,500 1600,450 1600,450" stroke="#38BDF8" stroke-width="4" fill="none" class="pulse-desktop d-pulse-3" style="--d-len: 2200;" />
       </g>
 
-      <!-- Subtle nodes at intersections -->
-      <g class="nodes" opacity="0.25">
-        <circle cx="500" cy="200" r="3" fill="#38BDF8" />
-        <circle cx="900" cy="250" r="4" fill="#38BDF8" />
-        <circle cx="600" cy="750" r="3" fill="#38BDF8" />
-        <circle cx="1000" cy="700" r="4" fill="#38BDF8" />
-        <circle cx="1100" cy="150" r="3" fill="#38BDF8" />
-        <circle cx="1200" cy="750" r="4" fill="#38BDF8" />
-        <circle cx="750" cy="475" r="2.5" fill="#38BDF8" />
+      <!-- Connection Nodes -->
+      <g opacity="0.9">
+        <circle cx="500" cy="200" r="4" fill="#38BDF8" filter="url(#glow-desktop)" />
+        <circle cx="1100" cy="250" r="5" fill="#38BDF8" filter="url(#glow-desktop)" />
+        <circle cx="700" cy="800" r="4" fill="#38BDF8" filter="url(#glow-desktop)" />
+        <circle cx="1200" cy="600" r="5" fill="#38BDF8" filter="url(#glow-desktop)" />
+        <circle cx="1000" cy="450" r="4" fill="#38BDF8" filter="url(#glow-desktop)" />
+        <circle cx="600" cy="350" r="3" fill="#38BDF8" opacity="0.6" />
+        <circle cx="800" cy="225" r="3" fill="#38BDF8" opacity="0.6" />
       </g>
     </svg>
+
+    <!-- MOBILE SVG -->
+    <svg class="block md:hidden w-full h-[700px] object-cover opacity-100" viewBox="0 0 400 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="glow-mobile" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="6" result="blur" />
+          <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+        <filter id="heavy-blur-mobile">
+          <feGaussianBlur stdDeviation="30" />
+        </filter>
+      </defs>
+
+      <!-- Flow Ribbons Mobile -->
+      <g opacity="0.9">
+        <path d="M-50,480 C100,480 150,220 450,200" stroke="#38BDF8" stroke-width="50" filter="url(#heavy-blur-mobile)" opacity="0.25" />
+        <path d="M-50,580 C120,580 200,420 450,300" stroke="#38BDF8" stroke-width="70" filter="url(#heavy-blur-mobile)" opacity="0.2" />
+      </g>
+
+      <!-- Crisp Lines Mobile -->
+      <g opacity="0.7" class="mobile-lines">
+        <path d="M-50,480 C100,480 150,220 450,200" stroke="#38BDF8" stroke-width="1.5" />
+        <path d="M-50,530 C110,530 180,320 450,250" stroke="#38BDF8" stroke-width="1" />
+        <path d="M-50,580 C120,580 200,420 450,300" stroke="#38BDF8" stroke-width="1.5" />
+        <path d="M150,220 C180,320 180,420 200,420" stroke="#38BDF8" stroke-width="0.5" stroke-dasharray="3 5" opacity="0.8" />
+      </g>
+
+      <!-- Pulses Mobile -->
+      <g filter="url(#glow-mobile)" opacity="1">
+        <path d="M-50,480 C100,480 150,220 450,200" stroke="#38BDF8" stroke-width="3" fill="none" class="pulse-mobile m-pulse-1" style="--m-len: 800;" />
+        <path d="M-50,580 C120,580 200,420 450,300" stroke="#38BDF8" stroke-width="3.5" fill="none" class="pulse-mobile m-pulse-2" style="--m-len: 800;" />
+      </g>
+
+      <!-- Nodes Mobile -->
+      <g opacity="0.9">
+        <circle cx="150" cy="220" r="4" fill="#38BDF8" filter="url(#glow-mobile)" />
+        <circle cx="400" cy="200" r="5" fill="#38BDF8" filter="url(#glow-mobile)" />
+        <circle cx="200" cy="420" r="4" fill="#38BDF8" filter="url(#glow-mobile)" />
+      </g>
+    </svg>
+
   </div>
 
   <style>
-    .pulse-line {
-      stroke-dasharray: 60 var(--path-len);
-      stroke-dashoffset: var(--path-len);
+    /* Radial mask perfectly blends top, bottom, and left without creating straight lines */
+    .mask-gradient {
+      -webkit-mask-image: radial-gradient(ellipse 100% 80% at 100% 50%, black 10%, transparent 80%);
+      mask-image: radial-gradient(ellipse 100% 80% at 100% 50%, black 10%, transparent 80%);
+    }
+    
+    @media (min-width: 768px) {
+      .mask-gradient {
+        -webkit-mask-image: radial-gradient(ellipse 80% 70% at 85% 55%, black 20%, transparent 75%);
+        mask-image: radial-gradient(ellipse 80% 70% at 85% 55%, black 20%, transparent 75%);
+      }
+    }
+
+    .pulse-desktop {
+      stroke-dasharray: 120 var(--d-len);
+      stroke-dashoffset: var(--d-len);
       stroke-linecap: round;
-      filter: drop-shadow(0 0 6px rgba(56,189,248,0.4));
+    }
+    
+    .pulse-mobile {
+      stroke-dasharray: 90 var(--m-len);
+      stroke-dashoffset: var(--m-len);
+      stroke-linecap: round;
     }
 
     @media (prefers-reduced-motion: no-preference) {
-      .pulse-1 { animation: flow 8s linear infinite 0s; }
-      .pulse-2 { animation: flow 10s linear infinite 3s; }
-      .pulse-3 { animation: flow 9s linear infinite 1.5s; }
-      .pulse-4 { animation: flow 11s linear infinite 5s; }
+      .d-pulse-1 { animation: flow-d 9s linear infinite 0s; }
+      .d-pulse-2 { animation: flow-d 11s linear infinite 2.5s; }
+      .d-pulse-3 { animation: flow-d 10s linear infinite 1s; }
+
+      .m-pulse-1 { animation: flow-m 7s linear infinite 0s; }
+      .m-pulse-2 { animation: flow-m 9s linear infinite 2s; }
     }
 
-    @keyframes flow {
-      0% { stroke-dashoffset: var(--path-len); }
+    @keyframes flow-d {
+      0% { stroke-dashoffset: var(--d-len); }
+      100% { stroke-dashoffset: 0; }
+    }
+    
+    @keyframes flow-m {
+      0% { stroke-dashoffset: var(--m-len); }
       100% { stroke-dashoffset: 0; }
     }
   </style>

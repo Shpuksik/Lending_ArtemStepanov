@@ -46,7 +46,7 @@ import { contacts } from '../../config/content';
         
         <div class="flex flex-col gap-1.5">
           <label for="phone" class="text-[13px] text-text-secondary">Телефон <span class="text-accent">*</span></label>
-          <input type="tel" id="phone" name="phone" required class="bg-surface border border-border rounded-lg px-4 py-2.5 text-[15px] text-text-main focus:outline-none focus:border-accent/40 transition-colors" placeholder="+7 (999) 000-00-00" />
+          <input type="tel" id="phone" name="phone" inputmode="tel" autocomplete="tel" required class="bg-surface border border-border rounded-lg px-4 py-2.5 text-[15px] text-text-main focus:outline-none focus:border-accent/40 transition-colors" placeholder="+7 999 123-45-67" />
         </div>
         
         <div class="flex flex-col gap-1.5">
@@ -81,11 +81,34 @@ import { contacts } from '../../config/content';
       
       const formData = new FormData(form);
       const company = formData.get('company');
+      const rawPhone = (formData.get('phone') as string) || '';
       
       if (company) {
         statusDiv.textContent = 'Заявка отправлена. Я свяжусь с вами.';
         statusDiv.className = 'text-[14px] text-center mt-2 text-[#4ade80] block';
         form.reset();
+        return;
+      }
+
+      // Phone validation
+      let digits = rawPhone.replace(/\D/g, "");
+      let normalizedPhone = "";
+      
+      if (!rawPhone.trim()) {
+        statusDiv.textContent = 'Укажите телефон, чтобы я мог связаться с вами.';
+        statusDiv.className = 'text-[14px] text-center mt-2 text-[#f87171] block';
+        return;
+      }
+      
+      if (digits.length === 10) {
+        normalizedPhone = "+7" + digits;
+      } else if (digits.length === 11 && digits.startsWith("8")) {
+        normalizedPhone = "+7" + digits.slice(1);
+      } else if (digits.length === 11 && digits.startsWith("7")) {
+        normalizedPhone = "+" + digits;
+      } else {
+        statusDiv.textContent = 'Введите номер телефона полностью.';
+        statusDiv.className = 'text-[14px] text-center mt-2 text-[#f87171] block';
         return;
       }
       
@@ -97,7 +120,7 @@ import { contacts } from '../../config/content';
       try {
         const payload = {
           name: formData.get('name'),
-          phone: formData.get('phone'),
+          phone: normalizedPhone,
           message: formData.get('message'),
           source: 'ai-neuro.ru',
           page: window.location.href

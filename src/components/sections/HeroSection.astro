@@ -4,7 +4,7 @@ import HeroDataFlow from '../ui/HeroDataFlow.astro';
 import { hero } from '../../config/content';
 ---
 
-<section class="py-16 md:py-24 lg:py-32 w-full relative overflow-hidden flex justify-center border-b border-border/30">
+<section class="py-16 md:py-24 lg:py-32 w-full relative overflow-hidden flex justify-center border-b border-border/30 isolate">
   <HeroDataFlow />
   
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(56,189,248,0.1),transparent_50%)] pointer-events-none"></div>
@@ -26,7 +26,6 @@ import { hero } from '../../config/content';
           Узнать форматы работы
         </Button>
       </div>
-      <p data-reveal-item class="text-sm text-text-muted">{hero.microtext}</p>
     </div>
   </div>
 </section>
