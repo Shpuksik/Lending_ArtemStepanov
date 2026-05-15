@@ -22,6 +22,24 @@ function readString(value: unknown, maxLength: number): string {
   return value.trim().slice(0, maxLength);
 }
 
+function normalizeRuPhone(phone: unknown): string | null {
+  const digits = String(phone || '').replace(/\D/g, '');
+
+  if (digits.length === 10) {
+    return `+7${digits}`;
+  }
+
+  if (digits.length === 11 && digits.startsWith('8')) {
+    return `+7${digits.slice(1)}`;
+  }
+
+  if (digits.length === 11 && digits.startsWith('7')) {
+    return `+${digits}`;
+  }
+
+  return null;
+}
+
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     if (request.method === 'OPTIONS') {
@@ -57,12 +75,13 @@ export default {
 
       const name = readString(data.name, 80);
       const phone = readString(data.phone, 40);
+      const normalizedPhone = normalizeRuPhone(phone);
       const message = readString(data.message, 1000);
       const page = readString(data.page, 300);
       const source = readString(data.source, 100);
 
-      if (!phone) {
-        return jsonResponse({ ok: false, error: 'Phone is required' }, 400);
+      if (!normalizedPhone) {
+        return jsonResponse({ ok: false, error: 'Invalid phone' }, 400);
       }
 
       if (!env.N8N_CALLBACK_WEBHOOK_URL) {
@@ -71,7 +90,7 @@ export default {
 
       const payload = {
         name,
-        phone,
+        phone: normalizedPhone,
         message,
         source,
         page,
@@ -100,4 +119,4 @@ export default {
 
     return env.ASSETS.fetch(request);
   },
-};
+};n
