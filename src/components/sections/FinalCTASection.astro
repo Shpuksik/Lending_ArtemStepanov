@@ -35,7 +35,7 @@ import { contacts } from '../../config/content';
     <!-- Right: Form -->
     <div class="w-full lg:w-[420px] shrink-0" data-reveal-item>
       <form id="callback-form" class="bg-card border border-border/80 rounded-[20px] p-6 md:p-8 flex flex-col gap-5 text-left w-full shadow-sm hover:border-border transition-colors relative overflow-hidden">
-        <h3 class="text-[20px] font-medium text-text-main mb-1">Кратко описать задачу</h3>
+        <h3 class="text-[20px] font-medium text-text-main mb-1">Оставить контакты для звонка</h3>
         
         <input type="text" name="company" tabindex="-1" aria-hidden="true" class="absolute opacity-0 -z-10 w-0 h-0 pointer-events-none" />
         
@@ -46,16 +46,16 @@ import { contacts } from '../../config/content';
         
         <div class="flex flex-col gap-1.5">
           <label for="phone" class="text-[13px] text-text-secondary">Телефон <span class="text-accent">*</span></label>
-          <input type="tel" id="phone" name="phone" inputmode="numeric" autocomplete="tel" pattern="[0-9]*" required class="bg-surface border border-border rounded-lg px-4 py-2.5 text-[15px] text-text-main focus:outline-none focus:border-accent/40 transition-colors" placeholder="79991234567" />
+          <input type="tel" id="phone" name="phone" inputmode="numeric" autocomplete="tel" pattern="[0-9]*" required class="bg-surface border border-border rounded-lg px-4 py-2.5 text-[15px] text-text-main focus:outline-none focus:border-accent/40 transition-colors" placeholder="Введите номер для связи" />
         </div>
         
         <div class="flex flex-col gap-1.5">
-          <label for="message" class="text-[13px] text-text-secondary">Кратко опишите задачу или процесс</label>
-          <textarea id="message" name="message" rows="2" class="bg-surface border border-border rounded-lg px-4 py-2.5 text-[15px] text-text-main focus:outline-none focus:border-accent/40 transition-colors resize-none" placeholder="Коротко опишите задачу или процесс"></textarea>
+          <label for="message" class="text-[13px] text-text-secondary">Что обсудить?</label>
+          <textarea id="message" name="message" rows="2" class="bg-surface border border-border rounded-lg px-4 py-2.5 text-[15px] text-text-main focus:outline-none focus:border-accent/40 transition-colors resize-none" placeholder="Коротко напишите, по какому вопросу вам перезвонить."></textarea>
         </div>
         
         <button type="submit" class="bg-text-main text-button-text font-medium rounded-lg px-6 py-3 mt-2 hover:bg-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center text-[15px]">
-          <span>Отправить задачу</span>
+          <span>Жду звонка</span>
         </button>
         
         <div id="form-status" class="text-[14px] text-center mt-2 hidden" aria-live="polite"></div>
@@ -92,7 +92,7 @@ import { contacts } from '../../config/content';
       const rawPhone = (formData.get('phone') as string) || '';
       
       if (company) {
-        statusDiv.textContent = 'Заявка отправлена. Я свяжусь с вами.';
+        statusDiv.textContent = 'Контакты отправлены. Я свяжусь с вами.';
         statusDiv.className = 'text-[14px] text-center mt-2 text-[#4ade80] block';
         form.reset();
         return;
@@ -121,7 +121,7 @@ import { contacts } from '../../config/content';
       }
       
       const btnSpan = submitBtn.querySelector('span');
-      if (btnSpan) btnSpan.textContent = 'Отправляю...';
+      if (btnSpan) btnSpan.textContent = 'Отправляем...';
       submitBtn.disabled = true;
       statusDiv.classList.add('hidden');
       
@@ -143,18 +143,18 @@ import { contacts } from '../../config/content';
         });
         
         if (response.ok) {
-          statusDiv.textContent = 'Заявка отправлена. Я свяжусь с вами.';
+          statusDiv.textContent = 'Контакты отправлены. Я свяжусь с вами.';
           statusDiv.className = 'text-[14px] text-center mt-2 text-[#4ade80] block';
           form.reset();
         } else {
           throw new Error('Server error');
         }
       } catch (err) {
-        statusDiv.textContent = 'Не удалось отправить заявку. Напишите в Telegram или MAX.';
+        statusDiv.textContent = 'Не удалось отправить. Попробуйте позже.';
         statusDiv.className = 'text-[14px] text-center mt-2 text-[#f87171] block';
       } finally {
         submitBtn.disabled = false;
-        if (btnSpan) btnSpan.textContent = 'Отправить задачу';
+        if (btnSpan) btnSpan.textContent = 'Жду звонка';
       }
     });
   });
