@@ -11,9 +11,10 @@ import { automationAreas } from '../../config/content';
     </p>
   </div>
   
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" data-reveal-group>
+  <div class="flex flex-wrap justify-center gap-6" data-reveal-group>
     {automationAreas.map((area, index) => (
-      <Card class={`flex flex-col h-full ${index < 3 ? 'border-t-2 border-t-accent/50' : ''}`} data-reveal-item>
+      <div class="w-full md:basis-[calc(50%-12px)] lg:basis-[calc(33.333%-16px)] min-w-0">
+        <Card class={`flex flex-col h-full ${index < 3 ? 'border-t-2 border-t-accent/50' : ''}`} data-reveal-item>
         <div class="text-text-muted text-[13px] font-medium mb-4">0{index + 1}</div>
         <h3 class="text-[17px] font-medium text-text-main mb-3">{area.title}</h3>
         <p class="text-[15px] text-text-secondary mb-6 flex-grow leading-relaxed">{area.description}</p>
@@ -21,6 +22,7 @@ import { automationAreas } from '../../config/content';
           <span>{area.effect}</span>
         </div>
       </Card>
+      </div>
     ))}
   </div>
 </section>
