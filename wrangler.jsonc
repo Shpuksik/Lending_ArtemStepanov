@@ -6,5 +6,12 @@
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS"
-  }
+  },
+  "routes": [
+    {
+      "pattern": "ai-neuro.ru",
+      "zone_name": "ai-neuro.ru",
+      "custom_domain": true
+    }
+  ]
 }
