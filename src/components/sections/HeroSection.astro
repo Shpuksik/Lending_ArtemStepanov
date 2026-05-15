@@ -17,8 +17,9 @@ import { hero } from '../../config/content';
       <p data-reveal-item class="text-[16px] md:text-[18px] lg:text-[20px] text-text-secondary leading-relaxed mb-10 max-w-2xl">
         {hero.subtitle}
       </p>
+      <p data-reveal-item class="text-sm text-text-muted mb-6">{hero.audienceHint}</p>
       
-      <div data-reveal-item class="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-4 w-full sm:w-auto">
+      <div data-reveal-item class="flex flex-col sm:flex-row items-start sm:items-center gap-4 w-full sm:w-auto">
         <Button href="#contacts" variant="primary" class="w-full sm:w-auto text-base">
           Обсудить задачу
         </Button>
