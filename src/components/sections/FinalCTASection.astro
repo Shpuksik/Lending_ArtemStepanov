@@ -4,28 +4,127 @@ import { contacts } from '../../config/content';
 ---
 
 <section id="contacts" class="py-16 md:py-24 w-full bg-surface border-y border-border">
-  <div class="max-w-[1200px] mx-auto px-5 lg:px-8 text-center max-w-2xl" data-reveal>
-    <h2 class="text-3xl md:text-4xl font-medium mb-6 text-text-main">Готовы обсудить задачу?</h2>
+  <div class="max-w-[1200px] mx-auto px-5 lg:px-8 flex flex-col lg:flex-row gap-12 lg:gap-16 items-center lg:items-start justify-between" data-reveal-group>
     
-    <p class="text-[16px] md:text-[18px] text-text-secondary leading-relaxed mb-10">
-      Обычно начинаем с короткого разговора: смотрим, где в процессе теряется время и есть ли смысл подключать автоматизацию.
-    </p>
-    
-    <div class="flex flex-col items-center gap-8">
-      <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-        <Button href={contacts.telegram} variant="primary" class="w-full sm:w-auto text-[16px]">
-          Написать в Telegram
-        </Button>
-        <Button href={contacts.max} variant="secondary" class="w-full sm:w-auto text-[16px]">
-          Написать в MAX
-        </Button>
-      </div>
+    <!-- Left: Texts and Messengers -->
+    <div class="max-w-xl text-center lg:text-left flex flex-col items-center lg:items-start w-full" data-reveal-item>
+      <h2 class="text-3xl md:text-4xl font-medium mb-6 text-text-main">Готовы обсудить задачу?</h2>
       
-      <div class="flex flex-col sm:flex-row gap-4 sm:gap-8 text-[16px]">
-        <a href={`tel:${contacts.phone.replace(/[^+\d]/g, '')}`} class="text-text-main hover:text-accent font-medium transition-colors flex items-center gap-2">
-          <span class="text-text-muted font-normal">Позвонить:</span> {contacts.phone}
-        </a>
+      <p class="text-[16px] md:text-[18px] text-text-secondary leading-relaxed mb-10">
+        Обычно начинаем с короткого разговора: смотрим, где в процессе теряется время и есть ли смысл подключать автоматизацию.
+      </p>
+      
+      <div class="flex flex-col gap-6 w-full sm:w-auto">
+        <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center lg:justify-start">
+          <Button href={contacts.telegram} variant="primary" class="w-full sm:w-auto text-[16px]">
+            Написать в Telegram
+          </Button>
+          <Button href={contacts.max} variant="secondary" class="w-full sm:w-auto text-[16px]">
+            Написать в MAX
+          </Button>
+        </div>
+        
+        <div class="flex justify-center lg:justify-start text-[16px]">
+          <a href={`tel:${contacts.phone.replace(/[^+\d]/g, '')}`} class="text-text-main hover:text-accent font-medium transition-colors flex items-center gap-2">
+            <span class="text-text-muted font-normal">Позвонить:</span> {contacts.phone}
+          </a>
+        </div>
       </div>
     </div>
+
+    <!-- Right: Form -->
+    <div class="w-full lg:w-[420px] shrink-0" data-reveal-item>
+      <form id="callback-form" class="bg-card border border-border/80 rounded-[20px] p-6 md:p-8 flex flex-col gap-5 text-left w-full shadow-sm hover:border-border transition-colors relative overflow-hidden">
+        <h3 class="text-[20px] font-medium text-text-main mb-1">Оставить заявку на обратный звонок</h3>
+        
+        <input type="text" name="company" tabindex="-1" aria-hidden="true" class="absolute opacity-0 -z-10 w-0 h-0 pointer-events-none" />
+        
+        <div class="flex flex-col gap-1.5">
+          <label for="name" class="text-[13px] text-text-secondary">Имя</label>
+          <input type="text" id="name" name="name" class="bg-surface border border-border rounded-lg px-4 py-2.5 text-[15px] text-text-main focus:outline-none focus:border-accent/40 transition-colors" placeholder="Как к вам обращаться?" />
+        </div>
+        
+        <div class="flex flex-col gap-1.5">
+          <label for="phone" class="text-[13px] text-text-secondary">Телефон <span class="text-accent">*</span></label>
+          <input type="tel" id="phone" name="phone" required class="bg-surface border border-border rounded-lg px-4 py-2.5 text-[15px] text-text-main focus:outline-none focus:border-accent/40 transition-colors" placeholder="+7 (999) 000-00-00" />
+        </div>
+        
+        <div class="flex flex-col gap-1.5">
+          <label for="message" class="text-[13px] text-text-secondary">Что хотите обсудить?</label>
+          <textarea id="message" name="message" rows="2" class="bg-surface border border-border rounded-lg px-4 py-2.5 text-[15px] text-text-main focus:outline-none focus:border-accent/40 transition-colors resize-none" placeholder="Коротко о задаче"></textarea>
+        </div>
+        
+        <button type="submit" class="bg-text-main text-button-text font-medium rounded-lg px-6 py-3 mt-2 hover:bg-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center text-[15px]">
+          <span>Отправить заявку</span>
+        </button>
+        
+        <div id="form-status" class="text-[14px] text-center mt-2 hidden" aria-live="polite"></div>
+        <noscript>
+          <div class="text-[13px] text-center mt-3 text-text-muted">Если форма не отправляется, напишите в Telegram или MAX.</div>
+        </noscript>
+      </form>
+    </div>
+
   </div>
 </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('callback-form') as HTMLFormElement | null;
+    const statusDiv = document.getElementById('form-status');
+    const submitBtn = form?.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+    
+    if (!form || !statusDiv || !submitBtn) return;
+    
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const formData = new FormData(form);
+      const company = formData.get('company');
+      
+      if (company) {
+        statusDiv.textContent = 'Заявка отправлена. Я свяжусь с вами.';
+        statusDiv.className = 'text-[14px] text-center mt-2 text-[#4ade80] block';
+        form.reset();
+        return;
+      }
+      
+      const btnSpan = submitBtn.querySelector('span');
+      if (btnSpan) btnSpan.textContent = 'Отправляю...';
+      submitBtn.disabled = true;
+      statusDiv.classList.add('hidden');
+      
+      try {
+        const payload = {
+          name: formData.get('name'),
+          phone: formData.get('phone'),
+          message: formData.get('message'),
+          source: 'ai-neuro.ru',
+          page: window.location.href
+        };
+        
+        const response = await fetch('/api/callback', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+        
+        if (response.ok) {
+          statusDiv.textContent = 'Заявка отправлена. Я свяжусь с вами.';
+          statusDiv.className = 'text-[14px] text-center mt-2 text-[#4ade80] block';
+          form.reset();
+        } else {
+          throw new Error('Server error');
+        }
+      } catch (err) {
+        statusDiv.textContent = 'Не удалось отправить заявку. Напишите в Telegram или MAX.';
+        statusDiv.className = 'text-[14px] text-center mt-2 text-[#f87171] block';
+      } finally {
+        submitBtn.disabled = false;
+        if (btnSpan) btnSpan.textContent = 'Отправить заявку';
+      }
+    });
+  });
+</script>

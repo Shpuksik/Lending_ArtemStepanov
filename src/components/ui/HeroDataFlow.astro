@@ -1,0 +1,75 @@
+---
+// src/components/ui/HeroDataFlow.astro
+---
+<div class="absolute inset-0 z-0 pointer-events-none overflow-hidden" aria-hidden="true">
+  
+  <!-- Right edge fade -->
+  <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-bg to-transparent z-10"></div>
+  <!-- Top/Bottom fades -->
+  <div class="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-bg to-transparent z-10"></div>
+  <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-bg to-transparent z-10"></div>
+
+  <!-- The SVG container with a mask to fade out the lines behind the text on the left -->
+  <div 
+    class="absolute inset-0 flex items-center justify-end transform translate-x-[10%] md:translate-x-[20%]"
+    style="-webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 10%, black 50%, black 100%); mask-image: linear-gradient(to right, transparent 0%, transparent 10%, black 50%, black 100%);"
+  >
+    <!-- SVG Data Flow -->
+    <svg class="w-[1000px] h-[800px] md:w-[1400px] md:h-[900px] flex-shrink-0 opacity-40 md:opacity-100" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+      
+      <g opacity="0.15" class="data-lines">
+        <!-- Main horizontal-ish flowing lines -->
+        <path d="M-100,450 C300,450 500,200 900,250 C1200,287 1500,100 1500,100" stroke="#38BDF8" stroke-width="1.5" />
+        <path d="M-100,500 C400,500 600,750 1000,700 C1300,650 1500,500 1500,500" stroke="#38BDF8" stroke-width="1" />
+        <path d="M-100,400 C400,350 700,100 1100,150 C1300,175 1500,350 1500,350" stroke="#38BDF8" stroke-width="1.5" />
+        <path d="M100,550 C400,550 800,850 1200,750 C1400,700 1500,850 1500,850" stroke="#38BDF8" stroke-width="1" />
+        <path d="M-100,475 C450,475 750,475 1500,475" stroke="#38BDF8" stroke-width="0.5" />
+        
+        <!-- Abstract connections (network edges) -->
+        <path d="M500,200 C600,350 550,600 600,750" stroke="#38BDF8" stroke-width="0.5" />
+        <path d="M900,250 C1000,400 950,550 1000,700" stroke="#38BDF8" stroke-width="0.5" />
+        <path d="M1100,150 C1150,300 1100,500 1200,750" stroke="#38BDF8" stroke-width="0.5" />
+      </g>
+
+      <!-- Animated pulses overlaid on the main paths -->
+      <g class="data-pulses" opacity="0.8">
+        <path d="M-100,450 C300,450 500,200 900,250 C1200,287 1500,100 1500,100" stroke="#38BDF8" stroke-width="2" class="pulse-line pulse-1" style="--path-len: 2000;" />
+        <path d="M-100,500 C400,500 600,750 1000,700 C1300,650 1500,500 1500,500" stroke="#38BDF8" stroke-width="2" class="pulse-line pulse-2" style="--path-len: 2000;" />
+        <path d="M-100,400 C400,350 700,100 1100,150 C1300,175 1500,350 1500,350" stroke="#38BDF8" stroke-width="2" class="pulse-line pulse-3" style="--path-len: 2000;" />
+        <path d="M100,550 C400,550 800,850 1200,750 C1400,700 1500,850 1500,850" stroke="#38BDF8" stroke-width="1.5" class="pulse-line pulse-4" style="--path-len: 2000;" />
+      </g>
+
+      <!-- Subtle nodes at intersections -->
+      <g class="nodes" opacity="0.25">
+        <circle cx="500" cy="200" r="3" fill="#38BDF8" />
+        <circle cx="900" cy="250" r="4" fill="#38BDF8" />
+        <circle cx="600" cy="750" r="3" fill="#38BDF8" />
+        <circle cx="1000" cy="700" r="4" fill="#38BDF8" />
+        <circle cx="1100" cy="150" r="3" fill="#38BDF8" />
+        <circle cx="1200" cy="750" r="4" fill="#38BDF8" />
+        <circle cx="750" cy="475" r="2.5" fill="#38BDF8" />
+      </g>
+    </svg>
+  </div>
+
+  <style>
+    .pulse-line {
+      stroke-dasharray: 60 var(--path-len);
+      stroke-dashoffset: var(--path-len);
+      stroke-linecap: round;
+      filter: drop-shadow(0 0 6px rgba(56,189,248,0.4));
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .pulse-1 { animation: flow 8s linear infinite 0s; }
+      .pulse-2 { animation: flow 10s linear infinite 3s; }
+      .pulse-3 { animation: flow 9s linear infinite 1.5s; }
+      .pulse-4 { animation: flow 11s linear infinite 5s; }
+    }
+
+    @keyframes flow {
+      0% { stroke-dashoffset: var(--path-len); }
+      100% { stroke-dashoffset: 0; }
+    }
+  </style>
+</div>
