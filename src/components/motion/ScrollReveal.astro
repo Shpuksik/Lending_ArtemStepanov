@@ -16,11 +16,11 @@
     const revealElements = document.querySelectorAll('[data-reveal]');
     revealElements.forEach((el) => {
       gsap.fromTo(el, 
-        { opacity: 0, y: 16 },
+        { opacity: 0, y: 10 },
         {
           opacity: 1, 
           y: 0, 
-          duration: 0.6, 
+          duration: 0.5, 
           ease: "power2.out",
           scrollTrigger: {
             trigger: el,
@@ -38,12 +38,12 @@
       if (items.length === 0) return;
       
       gsap.fromTo(items,
-        { opacity: 0, y: 16 },
+        { opacity: 0, y: 10 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.5,
-          stagger: 0.08,
+          duration: 0.45,
+          stagger: 0.06,
           ease: "power2.out",
           scrollTrigger: {
             trigger: group,
