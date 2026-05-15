@@ -1,5 +1,6 @@
 ---
 import Button from '../ui/Button.astro';
+import ProcessVisual from '../ui/ProcessVisual.astro';
 import { hero } from '../../config/content';
 ---
 
@@ -25,14 +26,5 @@ import { hero } from '../../config/content';
     <p data-reveal-item class="text-sm text-text-muted">{hero.microtext}</p>
   </div>
 
-  <div class="hidden lg:flex flex-col bg-card border border-border rounded-xl p-8 shrink-0 w-[380px]" data-reveal-item>
-    <div class="text-[13px] font-medium text-text-main mb-6 border border-border bg-surface inline-block px-3 py-1 rounded-md w-max opacity-80">15 лет инженерного опыта</div>
-    <h3 class="text-[18px] font-medium text-text-main mb-4">Что обычно разбираем:</h3>
-    <ul class="space-y-3 text-[15px] text-text-secondary">
-      <li class="flex items-start"><span class="text-text-muted mr-3">—</span>входящие заявки;</li>
-      <li class="flex items-start"><span class="text-text-muted mr-3">—</span>поддержку и типовые вопросы;</li>
-      <li class="flex items-start"><span class="text-text-muted mr-3">—</span>документы и знания компании;</li>
-      <li class="flex items-start"><span class="text-text-muted mr-3">—</span>повторяющиеся действия команды.</li>
-    </ul>
-  </div>
+  <ProcessVisual />
 </section>

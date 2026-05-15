@@ -3,16 +3,41 @@ import { about } from '../../config/content';
 ---
 
 <section class="py-16 md:py-24 max-w-[1200px] mx-auto px-5 lg:px-8">
-  <div class="max-w-3xl" data-reveal>
-    <div class="flex items-baseline gap-4 mb-8">
-      <div class="text-accent text-6xl md:text-[80px] font-bold opacity-90 tracking-tighter leading-none">15</div>
-      <div class="text-xl md:text-3xl font-medium text-text-main leading-tight">лет инженерного подхода<br class="hidden md:block"/> к сложным процессам</div>
-    </div>
+  <div class="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start" data-reveal-group>
     
-    <div class="space-y-6 text-[16px] md:text-[18px] text-text-secondary leading-relaxed">
-      {about.text.map((paragraph) => (
-        <p>{paragraph}</p>
-      ))}
+    <!-- Left Column: Text -->
+    <div class="flex-1 max-w-3xl" data-reveal-item>
+      <div class="flex items-baseline gap-4 mb-8">
+        <div class="text-accent text-6xl md:text-[80px] font-bold opacity-90 tracking-tighter leading-none">15</div>
+        <div class="text-xl md:text-3xl font-medium text-text-main leading-tight">лет инженерного подхода<br class="hidden md:block"/> к сложным процессам</div>
+      </div>
+      
+      <div class="space-y-6 text-[16px] md:text-[18px] text-text-secondary leading-relaxed">
+        {about.text.map((paragraph) => (
+          <p>{paragraph}</p>
+        ))}
+      </div>
     </div>
+
+    <!-- Right Column: Photo -->
+    <div class="w-full sm:max-w-md lg:w-[380px] shrink-0 mx-auto lg:mx-0" data-reveal-item>
+      <div class="bg-card border border-border/80 rounded-[24px] p-2 hover:border-border transition-colors duration-500">
+        <div class="rounded-[20px] overflow-hidden bg-surface relative aspect-[4/5]">
+          <img 
+            src="/images/artem-stepanov-about-4x5-gradient.webp" 
+            alt="Артём Степанов — ИИ и автоматизация бизнес-процессов" 
+            width="380" 
+            height="475" 
+            loading="lazy" 
+            class="w-full h-full object-cover object-center opacity-90 hover:opacity-100 transition-opacity duration-500"
+          />
+        </div>
+        <div class="pt-5 pb-3 px-4 text-center">
+          <div class="text-[16px] font-medium text-text-main mb-1">Артём Степанов</div>
+          <div class="text-[13px] text-text-secondary opacity-80">ИИ и автоматизация бизнес-процессов</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>

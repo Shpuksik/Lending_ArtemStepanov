@@ -1,0 +1,93 @@
+---
+// src/components/ui/ProcessVisual.astro
+---
+
+<div class="w-full bg-card/60 backdrop-blur-md border border-border/80 rounded-2xl p-6 lg:p-8 relative overflow-hidden group hover:border-border transition-colors duration-500 mt-8 lg:mt-0 flex-shrink-0 lg:w-[440px]" data-reveal-item>
+  
+  <!-- Subtle glow -->
+  <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(56,189,248,0.04),transparent_60%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+  
+  <div class="flex items-center justify-between mb-8 relative z-10">
+    <div class="text-[11px] font-medium tracking-[0.15em] text-text-muted uppercase flex items-center gap-2">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="opacity-70">
+        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+        <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+        <line x1="12" y1="22.08" x2="12" y2="12"></line>
+      </svg>
+      Process Intelligence
+    </div>
+    <div class="flex gap-1.5 items-center">
+      <div class="w-1 h-1 rounded-full bg-border"></div>
+      <div class="w-1 h-1 rounded-full bg-border"></div>
+      <div class="w-1.5 h-1.5 rounded-full bg-accent/50 pulse-dot"></div>
+    </div>
+  </div>
+
+  <div class="relative z-10">
+    <!-- Vertical connector for central layer -->
+    <div class="absolute left-1/2 top-4 bottom-4 w-[1px] bg-gradient-to-b from-transparent via-accent/10 to-transparent -translate-x-1/2 z-0"></div>
+
+    <div class="flex flex-col gap-3.5">
+      {[
+        { in: 'Заявки', center: 'Анализ', out: 'CRM / учё​т', delay: '0s' },
+        { in: 'Поддержка', center: 'Квалификация', out: 'Менеджер', delay: '1.5s' },
+        { in: 'Документы', center: 'Структурирование', out: 'База знаний', delay: '3s' },
+        { in: 'Продажи', center: 'Передача в работу', out: 'Контроль', delay: '0.7s' }
+      ].map((row, i) => (
+        <div class="flex items-center justify-between relative z-10 group/row">
+          
+          <!-- Input -->
+          <div class="w-[30%] text-center py-1.5 md:py-2 px-1 md:px-1.5 rounded-md border border-border/40 bg-surface/80 text-[10px] md:text-[12px] text-text-secondary truncate">
+            {row.in}
+          </div>
+          
+          <!-- Line In -->
+          <div class="flex-1 h-[1px] bg-gradient-to-r from-border/40 to-accent/20 relative overflow-hidden mx-1 md:mx-1.5">
+            <div class="hidden md:block absolute top-0 w-[15px] h-full bg-accent/80 blur-[1px] signal-line" style={`animation-delay: ${row.delay};`}></div>
+          </div>
+          
+          <!-- Center -->
+          <div class="w-[32%] text-center py-1.5 md:py-2 px-1 md:px-1.5 rounded-md border border-accent/20 bg-[#121214] text-[10px] md:text-[12px] text-text-main shadow-[0_0_10px_rgba(56,189,248,0.03)] transition-all duration-300 group-hover/row:border-accent/40 group-hover/row:shadow-[0_0_15px_rgba(56,189,248,0.1)] truncate relative">
+            <div class="absolute inset-0 bg-accent/5 opacity-0 group-hover/row:opacity-100 transition-opacity rounded-md pointer-events-none"></div>
+            {row.center}
+          </div>
+          
+          <!-- Line Out -->
+          <div class="flex-1 h-[1px] bg-gradient-to-r from-accent/20 to-border/40 relative overflow-hidden mx-1 md:mx-1.5">
+            <div class="hidden md:block absolute top-0 w-[15px] h-full bg-accent/60 blur-[1px] signal-line" style={`animation-delay: calc(${row.delay} + 0.5s);`}></div>
+          </div>
+
+          <!-- Output -->
+          <div class="w-[30%] text-center py-1.5 md:py-2 px-1 md:px-1.5 rounded-md border border-border/40 bg-surface/80 text-[10px] md:text-[12px] text-text-secondary truncate">
+            {row.out}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <style>
+    @media (prefers-reduced-motion: no-preference) {
+      .pulse-dot {
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+      .signal-line {
+        animation: signal 4s linear infinite;
+        opacity: 0;
+        left: -15px;
+      }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: .4; transform: scale(0.8); }
+    }
+    
+    @keyframes signal {
+      0% { left: -15px; opacity: 0; }
+      10% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { left: 100%; opacity: 0; }
+    }
+  </style>
+</div>
