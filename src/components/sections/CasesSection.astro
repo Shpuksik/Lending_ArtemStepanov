@@ -32,6 +32,23 @@ import { cases } from '../../config/content';
             <span class="text-accent opacity-90 font-medium block mb-1">Результат:</span>
             <span class="text-text-main">{c.result}</span>
           </div>
+          {c.links && (
+            <div class="mt-6 pt-4 border-t border-border/50 flex flex-wrap gap-3">
+              {c.links.map((link) => (
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1.5 text-[14px] text-accent hover:text-accent-hover font-medium transition-all py-2 px-3.5 rounded-lg bg-accent/5 hover:bg-accent/10 border border-accent/10 hover:border-accent/20 active:scale-[0.98]"
+                >
+                  {link.label}
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3.5 h-3.5 opacity-80">
+                    <path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd" />
+                  </svg>
+                </a>
+              ))}
+            </div>
+          )}
         </div>
       </Card>
       </div>
