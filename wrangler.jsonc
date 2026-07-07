@@ -12,6 +12,16 @@
       "pattern": "ai-neuro.ru",
       "zone_name": "ai-neuro.ru",
       "custom_domain": true
+    },
+    {
+      "pattern": "artemmomot.ru",
+      "zone_name": "artemmomot.ru",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.artemmomot.ru",
+      "zone_name": "artemmomot.ru",
+      "custom_domain": true
     }
   ]
 }
