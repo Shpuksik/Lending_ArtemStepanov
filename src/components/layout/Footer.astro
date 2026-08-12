@@ -2,17 +2,29 @@
 import { contacts } from '../../config/content';
 ---
 
-<footer class="py-12 md:py-16 w-full max-w-[1200px] mx-auto px-5 lg:px-8 border-t border-border mt-16 md:mt-32">
-  <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+<footer class="border-t border-border/70 py-10 md:py-14">
+  <div class="site-container flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
     <div>
-      <div class="text-lg font-semibold text-text-main mb-2">Артём Момот</div>
-      <div class="text-text-muted text-sm">&copy; {new Date().getFullYear()} Все права защищены.</div>
+      <a href="#top" class="brand-mark mb-4 inline-flex" aria-label="Наверх">
+        <span class="brand-monogram">AM</span>
+        <span>
+          <span class="block font-display text-[15px] font-semibold text-text-main">Артём Момот</span>
+          <span class="block text-xs text-text-muted">Инженер AI-автоматизации</span>
+        </span>
+      </a>
+      <p class="max-w-sm text-sm leading-relaxed text-text-muted">
+        Проектирование и внедрение управляемых систем для заявок, поддержки, документов и операционных процессов.
+      </p>
     </div>
-    
-    <div class="flex flex-col md:flex-row gap-4 md:gap-8">
-      <a href={contacts.telegram} class="text-text-secondary hover:text-text-main transition-colors text-sm">Telegram</a>
-      <a href={contacts.max} class="text-text-secondary hover:text-text-main transition-colors text-sm">MAX</a>
-      <a href={`tel:${contacts.phone.replace(/[^+\d]/g, '')}`} class="text-text-secondary hover:text-text-main transition-colors text-sm">{contacts.phone}</a>
+
+    <div class="flex flex-col items-start gap-4 md:items-end">
+      <div class="flex flex-wrap gap-x-6 gap-y-3">
+        <a href={contacts.telegram} target="_blank" rel="noopener noreferrer" class="footer-link">Telegram</a>
+        <a href={contacts.max} target="_blank" rel="noopener noreferrer" class="footer-link">MAX</a>
+        <a href={contacts.vk} target="_blank" rel="noopener noreferrer" class="footer-link">VK</a>
+        <a href={contacts.instagram} target="_blank" rel="noopener noreferrer" class="footer-link">Instagram</a>
+      </div>
+      <div class="text-xs text-text-muted">© {new Date().getFullYear()} Артём Момот</div>
     </div>
   </div>
 </footer>

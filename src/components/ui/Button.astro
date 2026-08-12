@@ -1,18 +1,17 @@
 ---
 interface Props {
   href?: string;
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'ghost';
   class?: string;
 }
 
 const { href, variant = 'primary', class: className = '' } = Astro.props;
-
-const baseStyles = "inline-flex items-center justify-center font-medium rounded-lg transition-all duration-[150ms] ease-out px-6 min-h-[48px] hover:-translate-y-[1px]";
+const baseStyles = 'button-base';
 const variants = {
-  primary: "bg-accent hover:bg-accent-hover text-button-text",
-  secondary: "bg-transparent border border-border text-text-main hover:bg-white/[0.02] hover:border-text-muted"
+  primary: 'button-primary',
+  secondary: 'button-secondary',
+  ghost: 'button-ghost'
 };
-
 const Element = href ? 'a' : 'button';
 ---
 

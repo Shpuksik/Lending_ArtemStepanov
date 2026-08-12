@@ -1,15 +1,26 @@
 ---
 import Button from '../ui/Button.astro';
-
 ---
 
-<header class="w-full relative z-50">
-  <div class="py-4 md:py-6 w-full max-w-[1200px] mx-auto px-5 lg:px-8 flex items-center justify-between">
-    <div class="text-xl md:text-2xl font-semibold tracking-tight text-text-main">
-      Артём Момот
-    </div>
-    <Button href="#contacts" variant="secondary" class="hidden md:inline-flex px-4 min-h-[40px] text-sm">
-      Связаться
+<header class="site-header">
+  <div class="site-container flex h-[72px] items-center justify-between gap-5">
+    <a href="#top" class="brand-mark" aria-label="Артём Момот — на главную">
+      <span class="brand-monogram">AM</span>
+      <span class="hidden sm:block">
+        <span class="block font-display text-[15px] font-semibold leading-tight text-text-main">Артём Момот</span>
+        <span class="block text-[10px] uppercase tracking-[0.18em] text-text-muted">AI · Automation · Systems</span>
+      </span>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-7" aria-label="Основная навигация">
+      <a class="nav-link" href="#expertise">Возможности</a>
+      <a class="nav-link" href="#cases">Кейсы</a>
+      <a class="nav-link" href="#process">Подход</a>
+      <a class="nav-link" href="#about">Обо мне</a>
+    </nav>
+
+    <Button href="#contacts" variant="secondary" class="min-h-[42px] px-4 text-[13px] sm:px-5">
+      Обсудить задачу
     </Button>
   </div>
 </header>

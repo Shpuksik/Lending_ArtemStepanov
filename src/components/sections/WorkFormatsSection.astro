@@ -1,20 +1,37 @@
 ---
-import Card from '../ui/Card.astro';
+import Button from '../ui/Button.astro';
 import { workFormats } from '../../config/content';
 ---
 
-<section id="formats" class="py-16 md:py-24 max-w-[1200px] mx-auto px-5 lg:px-8">
-  <h2 class="text-2xl md:text-4xl font-medium mb-12 text-text-main" data-reveal>Как можно начать работу</h2>
-  
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6" data-reveal-group>
-    {workFormats.map((format) => (
-      <Card class="flex flex-col" data-reveal-item>
-        <h3 class="text-lg font-medium text-text-main mb-3">{format.title}</h3>
-        <p class="text-text-secondary mb-6 flex-grow text-sm md:text-base">{format.description}</p>
-        <div class="text-sm text-text-muted pt-4 border-t border-border">
-          <span class="font-medium">Кому подходит:</span> {format.audience}
-        </div>
-      </Card>
-    ))}
+<section id="formats" class="section-space">
+  <div class="site-container">
+    <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between" data-reveal>
+      <div class="section-intro mb-0">
+        <div class="section-kicker">Форматы работы</div>
+        <h2 class="section-title">Можно начать без большого проекта</h2>
+      </div>
+      <p class="max-w-md text-sm leading-[1.7] text-text-muted lg:pb-2">
+        Самый здравый старт — выбрать один процесс, проверить результат и расширять систему только после того, как базовая логика работает.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-4 lg:grid-cols-3" data-reveal-group>
+      {workFormats.map((format) => (
+        <article class={`format-card ${format.accent ? 'format-card-accent' : ''}`} data-reveal-item>
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold tracking-[0.18em] text-accent">{format.number}</span>
+            {format.accent && <span class="recommended-label">Лучший старт</span>}
+          </div>
+          <h3 class="mt-10 font-display text-[24px] font-medium text-text-main">{format.title}</h3>
+          <p class="mt-4 text-sm leading-[1.7] text-text-secondary">{format.description}</p>
+          <div class="mt-7 border-t border-border/60 pt-5 text-xs leading-[1.7] text-text-muted">
+            {format.audience}
+          </div>
+          <Button href="#contacts" variant={format.accent ? 'primary' : 'ghost'} class="mt-8 w-full">
+            {format.accent ? 'Обсудить процесс' : 'Узнать подробнее'}
+          </Button>
+        </article>
+      ))}
+    </div>
   </div>
 </section>

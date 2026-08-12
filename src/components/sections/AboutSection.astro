@@ -2,42 +2,50 @@
 import { about } from '../../config/content';
 ---
 
-<section class="py-16 md:py-24 max-w-[1200px] mx-auto px-5 lg:px-8">
-  <div class="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start" data-reveal-group>
-    
-    <!-- Left Column: Text -->
-    <div class="flex-1 max-w-3xl" data-reveal-item>
-      <div class="flex items-baseline gap-4 mb-8">
-        <div class="text-accent text-6xl md:text-[80px] font-bold opacity-90 tracking-tighter leading-none">15</div>
-        <div class="text-xl md:text-3xl font-medium text-text-main leading-tight">лет инженерного подхода<br class="hidden md:block"/> к сложным процессам</div>
+<section id="about" class="section-space border-y border-border/60 bg-surface/45">
+  <div class="site-container grid items-center gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:gap-20">
+    <div class="relative mx-auto w-full max-w-[470px] lg:mx-0" data-reveal>
+      <div class="portrait-frame">
+        <div class="portrait-lines" aria-hidden="true"></div>
+        <img
+          src="/images/artem-stepanov-about-4x5-gradient.webp"
+          alt="Артём Момот — инженер AI-автоматизации"
+          width="896"
+          height="1120"
+          loading="lazy"
+          decoding="async"
+          class="relative z-10 h-full w-full object-cover"
+        />
       </div>
-      
-      <div class="space-y-6 text-[16px] md:text-[18px] text-text-secondary leading-relaxed">
-        {about.text.map((paragraph) => (
-          <p>{paragraph}</p>
+      <div class="portrait-badge">
+        <span class="font-display text-[28px] font-semibold text-text-main">15</span>
+        <span class="text-[11px] leading-tight text-text-muted">лет работы<br />со сложными процессами</span>
+      </div>
+    </div>
+
+    <div data-reveal-group>
+      <div data-reveal-item class="section-kicker">{about.eyebrow}</div>
+      <h2 data-reveal-item class="section-title max-w-[760px]">{about.title}</h2>
+      <div data-reveal-item class="mt-7 max-w-[720px] space-y-5 text-[16px] leading-[1.8] text-text-secondary">
+        {about.text.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+
+      <div class="mt-9 grid gap-3" data-reveal-item>
+        {about.principles.map((principle) => (
+          <div class="principle-row">
+            <span class="principle-check" aria-hidden="true">✓</span>
+            <span>{principle}</span>
+          </div>
         ))}
       </div>
-    </div>
 
-    <!-- Right Column: Photo -->
-    <div class="w-full sm:max-w-md lg:w-[380px] shrink-0 mx-auto lg:mx-0" data-reveal-item>
-      <div class="bg-card border border-border/80 rounded-[24px] p-2 hover:border-border transition-colors duration-500">
-        <div class="rounded-[20px] overflow-hidden bg-surface relative aspect-[4/5]">
-          <img 
-            src="/images/artem-stepanov-about-4x5-gradient.webp" 
-            alt="Артём Момот — ИИ и автоматизация бизнес-процессов" 
-            width="380" 
-            height="475" 
-            loading="lazy" 
-            class="w-full h-full object-cover object-center opacity-90 hover:opacity-100 transition-opacity duration-500"
-          />
-        </div>
-        <div class="pt-5 pb-3 px-4 text-center">
-          <div class="text-[16px] font-medium text-text-main mb-1">Артём Момот</div>
-          <div class="text-[13px] text-text-secondary opacity-80">ИИ и автоматизация бизнес-процессов</div>
+      <div data-reveal-item class="mt-9 flex items-center gap-4 border-t border-border/60 pt-7">
+        <div class="brand-monogram">AM</div>
+        <div>
+          <div class="font-display text-base font-medium text-text-main">Артём Момот</div>
+          <div class="text-xs text-text-muted">Инженер AI-автоматизации · Ижевск / удалённо</div>
         </div>
       </div>
     </div>
-
   </div>
 </section>

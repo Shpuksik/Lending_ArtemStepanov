@@ -1,5 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="112" fill="#121214" />
-  <text x="50%" y="55%" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="260" font-weight="600" fill="#EDEDED" text-anchor="middle" dominant-baseline="central" letter-spacing="-8">AM</text>
-  <circle cx="390" cy="150" r="28" fill="#38BDF8" />
+  <defs>
+    <linearGradient id="bg" x1="64" y1="32" x2="448" y2="480" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#14202A" />
+      <stop offset="1" stop-color="#080B0F" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)" />
+  <rect x="12" y="12" width="488" height="488" rx="100" fill="none" stroke="#5AD7FF" stroke-opacity=".18" stroke-width="12" />
+  <text x="50%" y="53%" font-family="Arial, Helvetica, sans-serif" font-size="218" font-weight="700" fill="#F4F7FA" text-anchor="middle" dominant-baseline="central" letter-spacing="-14">AM</text>
+  <circle cx="409" cy="134" r="25" fill="#5AD7FF" />
 </svg>

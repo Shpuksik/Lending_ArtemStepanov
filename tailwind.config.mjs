@@ -4,21 +4,22 @@ export default {
   theme: {
     extend: {
       colors: {
-        bg: '#0A0A0B',
-        surface: '#121214',
-        card: '#18181D',
-        border: '#333338',
-        'text-main': '#EDEDED',
-        'text-secondary': '#B8C0CC',
-        'text-muted': '#7F8794',
-        accent: '#38BDF8',
-        'accent-hover': '#0EA5E9',
-        'button-text': '#020617',
+        bg: '#080B0F',
+        surface: '#0D1218',
+        card: '#111820',
+        border: '#27323D',
+        'text-main': '#F4F7FA',
+        'text-secondary': '#A7B1BD',
+        'text-muted': '#6F7C89',
+        accent: '#5AD7FF',
+        'accent-hover': '#82E3FF',
+        'button-text': '#041016'
       },
       fontFamily: {
         sans: ['Manrope', 'Inter', 'sans-serif'],
-      },
-    },
+        display: ['Space Grotesk', 'Manrope', 'sans-serif']
+      }
+    }
   },
-  plugins: [],
-}
+  plugins: []
+};
