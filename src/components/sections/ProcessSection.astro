@@ -2,26 +2,30 @@
 import { processSteps } from '../../config/content';
 ---
 
-<section class="py-16 md:py-24 max-w-[1200px] mx-auto px-5 lg:px-8">
-  <div class="max-w-3xl mb-12" data-reveal>
-    <h2 class="text-2xl md:text-4xl font-medium mb-4 text-text-main">Как строится работа</h2>
-    <p class="text-base md:text-lg text-text-secondary">
-      Внедрение автоматизации — это понятный инженерный процесс. Основной фокус — понять процесс, выделить повторяющиеся действия и аккуратно встроить автоматизацию в работу бизнеса.
-    </p>
-  </div>
+<section id="process" class="section-space">
+  <div class="site-container">
+    <div class="section-intro" data-reveal>
+      <div class="section-kicker">Как строится работа</div>
+      <h2 class="section-title">Сначала логика процесса. Потом код и интеграции</h2>
+      <p class="section-lead">
+        Такой порядок снижает риск собрать красивую технологию, которая не приживётся в ежедневной работе команды.
+      </p>
+    </div>
 
-  <div class="relative max-w-3xl">
-    <div class="absolute left-[15px] top-4 bottom-4 w-[1px] bg-border md:left-[23px]"></div>
-    
-    <div class="space-y-8 md:space-y-12" data-reveal-group>
+    <div class="process-grid mt-14" data-reveal-group>
       {processSteps.map((step, index) => (
-        <div class="relative pl-10 md:pl-16" data-reveal-item>
-          <div class="absolute left-0 top-1 w-8 h-8 md:w-12 md:h-12 rounded-full bg-surface border border-border flex items-center justify-center text-xs md:text-sm text-text-muted font-medium z-10">
-            0{index + 1}
+        <article class="process-card" data-reveal-item>
+          <div class="flex items-center gap-4">
+            <span class="process-number">{step.number}</span>
+            {index < processSteps.length - 1 && <div class="process-line hidden lg:block" aria-hidden="true"><span></span></div>}
           </div>
-          <h3 class="text-lg font-medium text-text-main mb-2 mt-1 md:mt-3">{step.title}</h3>
-          <p class="text-text-secondary text-sm md:text-base">{step.description}</p>
-        </div>
+          <h3 class="mt-7 font-display text-[22px] font-medium text-text-main">{step.title}</h3>
+          <p class="mt-4 text-sm leading-[1.7] text-text-secondary">{step.description}</p>
+          <div class="mt-6 border-t border-border/60 pt-5 text-xs leading-relaxed text-text-muted">
+            <span class="mb-1 block uppercase tracking-[0.14em] text-accent">На выходе</span>
+            {step.deliverable}
+          </div>
+        </article>
       ))}
     </div>
   </div>

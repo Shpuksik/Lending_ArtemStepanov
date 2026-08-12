@@ -1,70 +1,69 @@
 ---
-import Button from '../ui/Button.astro';
 import { contacts } from '../../config/content';
 ---
 
-<section id="contacts" class="py-16 md:py-24 w-full bg-surface border-y border-border">
-  <div class="max-w-[1200px] mx-auto px-5 lg:px-8 flex flex-col lg:flex-row gap-12 lg:gap-16 items-center lg:items-start justify-between" data-reveal-group>
-    
-    <!-- Left: Texts and Messengers -->
-    <div class="max-w-xl text-center lg:text-left flex flex-col items-center lg:items-start w-full" data-reveal-item>
-      <h2 class="text-3xl md:text-4xl font-medium mb-6 text-text-main">Готовы обсудить задачу?</h2>
-      
-      <p class="text-[16px] md:text-[18px] text-text-secondary leading-relaxed mb-10">
-        Обычно начинаем с короткого разговора: смотрим, где в процессе теряется время и есть ли смысл подключать автоматизацию.
-      </p>
-      
-      <div class="flex flex-col gap-6 w-full sm:w-auto">
-        <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center lg:justify-start">
-          <Button href={contacts.telegram} variant="primary" class="w-full sm:w-auto text-[16px]">
-            Написать в Telegram
-          </Button>
-          <Button href={contacts.max} variant="secondary" class="w-full sm:w-auto text-[16px]">
-            Написать в MAX
-          </Button>
+<section id="contacts" class="pb-12 pt-8 md:pb-20 md:pt-12">
+  <div class="site-container">
+    <div class="cta-shell" data-reveal-group>
+      <div class="cta-glow" aria-hidden="true"></div>
+      <div class="relative z-10 max-w-xl" data-reveal-item>
+        <div class="section-kicker">Следующий шаг</div>
+        <h2 class="font-display text-[36px] font-medium leading-[1.04] tracking-[-0.035em] text-text-main sm:text-[48px]">
+          Разберём, где процесс можно сделать быстрее и спокойнее
+        </h2>
+        <p class="mt-6 text-[16px] leading-[1.75] text-text-secondary">
+          На первой встрече не нужно техническое задание. Достаточно описать, что команда делает вручную, где теряются заявки или какие вопросы повторяются каждый день.
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href={contacts.telegram} target="_blank" rel="noopener noreferrer" class="contact-pill contact-pill-primary">Telegram <span>↗</span></a>
+          <a href={contacts.max} target="_blank" rel="noopener noreferrer" class="contact-pill">MAX <span>↗</span></a>
+          <a href={`tel:${contacts.phone.replace(/[^+\d]/g, '')}`} class="contact-pill">{contacts.phone}</a>
         </div>
-        
-        <div class="flex justify-center lg:justify-start text-[16px]">
-          <a href={`tel:${contacts.phone.replace(/[^+\d]/g, '')}`} class="text-text-main hover:text-accent font-medium transition-colors flex items-center gap-2">
-            <span class="text-text-muted font-normal">Позвонить:</span> {contacts.phone}
-          </a>
+
+        <div class="mt-9 flex items-center gap-3 text-xs text-text-muted">
+          <span class="status-dot"></span>
+          Обычно начинаем с 20–30 минут разговора о процессе
         </div>
       </div>
-    </div>
 
-    <!-- Right: Form -->
-    <div class="w-full lg:w-[420px] shrink-0" data-reveal-item>
-      <form id="callback-form" class="bg-card border border-border/80 rounded-[20px] p-6 md:p-8 flex flex-col gap-5 text-left w-full shadow-sm hover:border-border transition-colors relative overflow-hidden">
-        <h3 class="text-[20px] font-medium text-text-main mb-1">Оставить контакты для звонка</h3>
-        
-        <input type="text" name="company" tabindex="-1" aria-hidden="true" class="absolute opacity-0 -z-10 w-0 h-0 pointer-events-none" />
-        
-        <div class="flex flex-col gap-1.5">
-          <label for="name" class="text-[13px] text-text-secondary">Имя</label>
-          <input type="text" id="name" name="name" class="bg-surface border border-border rounded-lg px-4 py-2.5 text-[15px] text-text-main focus:outline-none focus:border-accent/40 transition-colors" placeholder="Как к вам обращаться?" />
-        </div>
-        
-        <div class="flex flex-col gap-1.5">
-          <label for="phone" class="text-[13px] text-text-secondary">Телефон <span class="text-accent">*</span></label>
-          <input type="tel" id="phone" name="phone" inputmode="numeric" autocomplete="tel" pattern="[0-9]*" required class="bg-surface border border-border rounded-lg px-4 py-2.5 text-[15px] text-text-main focus:outline-none focus:border-accent/40 transition-colors" placeholder="Введите номер для связи" />
-        </div>
-        
-        <div class="flex flex-col gap-1.5">
-          <label for="message" class="text-[13px] text-text-secondary">Что обсудить?</label>
-          <textarea id="message" name="message" rows="2" class="bg-surface border border-border rounded-lg px-4 py-2.5 text-[15px] text-text-main focus:outline-none focus:border-accent/40 transition-colors resize-none" placeholder="Коротко напишите, по какому вопросу вам перезвонить."></textarea>
-        </div>
-        
-        <button type="submit" class="bg-text-main text-button-text font-medium rounded-lg px-6 py-3 mt-2 hover:bg-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center text-[15px]">
-          <span>Жду звонка</span>
-        </button>
-        
-        <div id="form-status" class="text-[14px] text-center mt-2 hidden" aria-live="polite"></div>
-        <noscript>
-          <div class="text-[13px] text-center mt-3 text-text-muted">Если форма не отправляется, напишите в Telegram или MAX.</div>
-        </noscript>
-      </form>
-    </div>
+      <div class="relative z-10 w-full lg:max-w-[440px]" data-reveal-item>
+        <form id="callback-form" class="callback-form" novalidate>
+          <div class="mb-1">
+            <div class="font-display text-[22px] font-medium text-text-main">Заказать обратный звонок</div>
+            <p class="mt-2 text-xs leading-relaxed text-text-muted">Оставьте номер и пару слов о задаче.</p>
+          </div>
 
+          <input type="text" name="company" tabindex="-1" aria-hidden="true" class="absolute -z-10 h-0 w-0 opacity-0" autocomplete="off" />
+
+          <div class="form-field">
+            <label for="name">Имя</label>
+            <input type="text" id="name" name="name" autocomplete="name" placeholder="Как к вам обращаться?" />
+          </div>
+
+          <div class="form-field">
+            <label for="phone">Телефон <span>*</span></label>
+            <input type="tel" id="phone" name="phone" inputmode="numeric" autocomplete="tel" pattern="[0-9]*" required placeholder="Например, 9828154779" aria-describedby="phone-hint" />
+            <span id="phone-hint" class="sr-only">Введите 10 или 11 цифр российского номера</span>
+          </div>
+
+          <div class="form-field">
+            <label for="message">Что хотите улучшить?</label>
+            <textarea id="message" name="message" rows="3" placeholder="Например: не успеваем обрабатывать заявки"></textarea>
+          </div>
+
+          <button type="submit" class="button-base button-primary mt-1 w-full">
+            <span>Жду звонка</span>
+            <span aria-hidden="true">↗</span>
+          </button>
+
+          <div id="form-status" class="hidden text-center text-sm" role="status" aria-live="polite"></div>
+          <p class="text-center text-[10px] leading-relaxed text-text-muted">
+            Контакты используются только для связи по вашему запросу.
+          </p>
+        </form>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -73,88 +72,70 @@ import { contacts } from '../../config/content';
     const form = document.getElementById('callback-form') as HTMLFormElement | null;
     const statusDiv = document.getElementById('form-status');
     const submitBtn = form?.querySelector('button[type="submit"]') as HTMLButtonElement | null;
-    
-    if (!form || !statusDiv || !submitBtn) return;
-    
     const phoneInput = document.getElementById('phone') as HTMLInputElement | null;
-    if (phoneInput) {
-      phoneInput.addEventListener('input', () => {
-        let val = phoneInput.value.replace(/\D/g, "");
-        phoneInput.value = val.slice(0, 11);
-      });
-    }
-    
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
+
+    if (!form || !statusDiv || !submitBtn || !phoneInput) return;
+
+    phoneInput.addEventListener('input', () => {
+      phoneInput.value = phoneInput.value.replace(/\D/g, '').slice(0, 11);
+    });
+
+    const showStatus = (message: string, isSuccess: boolean) => {
+      statusDiv.textContent = message;
+      statusDiv.className = `block text-center text-sm ${isSuccess ? 'text-[#7ee2b8]' : 'text-[#ff8f99]'}`;
+    };
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
       const formData = new FormData(form);
       const company = formData.get('company');
-      const rawPhone = (formData.get('phone') as string) || '';
-      
+      const rawPhone = String(formData.get('phone') || '');
+
       if (company) {
-        statusDiv.textContent = 'Контакты отправлены. Я свяжусь с вами.';
-        statusDiv.className = 'text-[14px] text-center mt-2 text-[#4ade80] block';
+        showStatus('Контакты отправлены. Я свяжусь с вами.', true);
         form.reset();
         return;
       }
 
-      // Phone validation
-      let digits = rawPhone.replace(/\D/g, "");
-      let normalizedPhone = "";
-      
-      if (!rawPhone.trim()) {
-        statusDiv.textContent = 'Укажите телефон, чтобы я мог связаться с вами.';
-        statusDiv.className = 'text-[14px] text-center mt-2 text-[#f87171] block';
+      const digits = rawPhone.replace(/\D/g, '');
+      let normalizedPhone = '';
+
+      if (digits.length === 10) normalizedPhone = `+7${digits}`;
+      if (digits.length === 11 && digits.startsWith('8')) normalizedPhone = `+7${digits.slice(1)}`;
+      if (digits.length === 11 && digits.startsWith('7')) normalizedPhone = `+${digits}`;
+
+      if (!normalizedPhone) {
+        showStatus('Введите российский номер полностью: 10 или 11 цифр.', false);
+        phoneInput.focus();
         return;
       }
-      
-      if (digits.length === 10) {
-        normalizedPhone = "+7" + digits;
-      } else if (digits.length === 11 && digits.startsWith("8")) {
-        normalizedPhone = "+7" + digits.slice(1);
-      } else if (digits.length === 11 && digits.startsWith("7")) {
-        normalizedPhone = "+" + digits;
-      } else {
-        statusDiv.textContent = 'Введите номер телефона полностью.';
-        statusDiv.className = 'text-[14px] text-center mt-2 text-[#f87171] block';
-        return;
-      }
-      
-      const btnSpan = submitBtn.querySelector('span');
-      if (btnSpan) btnSpan.textContent = 'Отправляем...';
+
+      const label = submitBtn.querySelector('span');
+      if (label) label.textContent = 'Отправляю...';
       submitBtn.disabled = true;
       statusDiv.classList.add('hidden');
-      
+
       try {
-        const payload = {
-          name: formData.get('name'),
-          phone: normalizedPhone,
-          message: formData.get('message'),
-          source: 'ai-neuro.ru',
-          page: window.location.href
-        };
-        
         const response = await fetch('/api/callback', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(payload)
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: formData.get('name'),
+            phone: normalizedPhone,
+            message: formData.get('message'),
+            source: window.location.hostname,
+            page: window.location.href
+          })
         });
-        
-        if (response.ok) {
-          statusDiv.textContent = 'Контакты отправлены. Я свяжусь с вами.';
-          statusDiv.className = 'text-[14px] text-center mt-2 text-[#4ade80] block';
-          form.reset();
-        } else {
-          throw new Error('Server error');
-        }
-      } catch (err) {
-        statusDiv.textContent = 'Не удалось отправить. Попробуйте позже.';
-        statusDiv.className = 'text-[14px] text-center mt-2 text-[#f87171] block';
+
+        if (!response.ok) throw new Error('Request failed');
+        showStatus('Спасибо. Контакты отправлены — я свяжусь с вами.', true);
+        form.reset();
+      } catch {
+        showStatus('Не удалось отправить. Напишите мне в Telegram или MAX.', false);
       } finally {
         submitBtn.disabled = false;
-        if (btnSpan) btnSpan.textContent = 'Жду звонка';
+        if (label) label.textContent = 'Жду звонка';
       }
     });
   });

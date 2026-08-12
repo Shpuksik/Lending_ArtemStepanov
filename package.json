@@ -1,5 +1,5 @@
 {
-  "name": "lending_artemstepanov",
+  "name": "artem-momot-site",
   "type": "module",
   "version": "1.0.0",
   "scripts": {
@@ -12,7 +12,6 @@
   "dependencies": {
     "@astrojs/tailwind": "^5.1.0",
     "astro": "^4.5.0",
-    "gsap": "^3.12.5",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.4.2"
   },

@@ -8,6 +8,20 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
+const canonicalUrl = 'https://artemmomot.ru/';
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'Артём Момот — AI-автоматизация бизнеса',
+  url: canonicalUrl,
+  founder: {
+    '@type': 'Person',
+    name: 'Артём Момот',
+    jobTitle: 'Инженер AI-автоматизации'
+  },
+  areaServed: 'RU',
+  description
+};
 ---
 
 <!DOCTYPE html>
@@ -17,24 +31,30 @@ const { title, description } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    
-    <!-- Favicon -->
+    <meta name="theme-color" content="#080b0f" />
+    <link rel="canonical" href={canonicalUrl} />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    
-    <!-- Open Graph -->
+
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <!-- <meta property="og:image" content="/og-image.jpg" /> -->
-    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet" />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
     <meta name="generator" content={Astro.generator} />
   </head>
-  <body class="min-h-screen flex flex-col">
+  <body class="min-h-screen overflow-x-hidden">
+    <a class="skip-link" href="#main-content">Перейти к содержанию</a>
     <slot />
     <ScrollReveal />
   </body>

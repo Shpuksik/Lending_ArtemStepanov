@@ -1,59 +1,41 @@
----
----
+<script is:inline>
+  document.documentElement.classList.add('motion-ready');
+</script>
 
 <script>
-  import { gsap } from 'gsap';
-  import { ScrollTrigger } from 'gsap/ScrollTrigger';
-  
-  gsap.registerPlugin(ScrollTrigger);
+  function initReveal() {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const singleItems = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'));
+    const groups = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal-group]'));
 
-  function initMotion() {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      [...singleItems, ...groups.flatMap((group) => Array.from(group.querySelectorAll<HTMLElement>('[data-reveal-item]')))]
+        .forEach((element) => element.classList.add('is-visible'));
       return;
     }
-    
-    // Reveal individual sections/items
-    const revealElements = document.querySelectorAll('[data-reveal]');
-    revealElements.forEach((el) => {
-      gsap.fromTo(el, 
-        { opacity: 0, y: 10 },
-        {
-          opacity: 1, 
-          y: 0, 
-          duration: 0.5, 
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 85%",
-            once: true
-          }
-        }
-      );
-    });
 
-    // Stagger reveal groups
-    const revealGroups = document.querySelectorAll('[data-reveal-group]');
-    revealGroups.forEach((group) => {
-      const items = group.querySelectorAll('[data-reveal-item]');
-      if (items.length === 0) return;
-      
-      gsap.fromTo(items,
-        { opacity: 0, y: 10 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.45,
-          stagger: 0.06,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: group,
-            start: "top 85%",
-            once: true
-          }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const target = entry.target as HTMLElement;
+
+        if (target.hasAttribute('data-reveal-group')) {
+          const children = target.querySelectorAll<HTMLElement>('[data-reveal-item]');
+          children.forEach((child, index) => {
+            child.style.transitionDelay = `${Math.min(index * 55, 275)}ms`;
+            child.classList.add('is-visible');
+          });
+        } else {
+          target.classList.add('is-visible');
         }
-      );
-    });
+
+        observer.unobserve(target);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -7% 0px' });
+
+    singleItems.forEach((element) => observer.observe(element));
+    groups.forEach((group) => observer.observe(group));
   }
 
-  document.addEventListener('DOMContentLoaded', initMotion);
+  document.addEventListener('DOMContentLoaded', initReveal, { once: true });
 </script>
