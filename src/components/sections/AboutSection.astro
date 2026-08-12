@@ -2,34 +2,43 @@
 import { about } from '../../config/content';
 ---
 
-<section id="about" class="section-space about-section">
-  <div class="site-container">
-    <div class="about-topline">
-      <span>{about.eyebrow}</span>
-      <span>Инженерный опыт / IT / бизнес-процессы</span>
+<section id="about" class="section-space border-y border-border/60 bg-surface/45">
+  <div class="site-container grid items-center gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:gap-20">
+    <div class="relative mx-auto w-full max-w-[470px] lg:mx-0" data-reveal>
+      <div class="portrait-frame">
+        <div class="portrait-lines" aria-hidden="true"></div>
+        <img
+          src="/images/artem-stepanov-about-4x5-gradient.webp"
+          alt="Артём Момот — инженер AI-автоматизации"
+          width="896"
+          height="1120"
+          loading="lazy"
+          decoding="async"
+          class="relative z-10 h-full w-full object-cover"
+        />
+      </div>
+      <div class="portrait-badge">
+        <span class="font-display text-[28px] font-semibold text-text-main">15</span>
+        <span class="text-[11px] leading-tight text-text-muted">лет работы<br />со сложными процессами</span>
+      </div>
     </div>
 
-    <div class="about-grid">
-      <div class="about-statement">
-        <span class="about-number">15</span>
-        <p>лет работал инженером-технологом в нефтегазовой отрасли</p>
+    <div data-reveal-group>
+      <div data-reveal-item class="section-kicker">{about.eyebrow}</div>
+      <h2 data-reveal-item class="section-title max-w-[760px]">{about.title}</h2>
+      <div data-reveal-item class="mt-7 max-w-[720px] space-y-5 text-[16px] leading-[1.8] text-text-secondary">
+        {about.text.map((paragraph) => <p>{paragraph}</p>)}
       </div>
 
-      <div class="about-content">
-        <h2>{about.title}</h2>
-        <div class="about-copy">
-          {about.text.map((paragraph) => <p>{paragraph}</p>)}
-        </div>
+      <div class="mt-9 grid gap-3" data-reveal-item>
+        {about.principles.map((principle) => (
+          <div class="principle-row">
+            <span class="principle-check" aria-hidden="true">✓</span>
+            <span>{principle}</span>
+          </div>
+        ))}
       </div>
-    </div>
 
-    <div class="principles-list">
-      {about.principles.map((principle, index) => (
-        <div class="principle-row">
-          <span>0{index + 1}</span>
-          <strong>{principle}</strong>
-        </div>
-      ))}
     </div>
   </div>
 </section>

@@ -3,27 +3,27 @@ import Button from '../ui/Button.astro';
 ---
 
 <header class="site-header">
-  <div class="site-container header-inner">
+  <div class="site-container flex h-[72px] items-center justify-between gap-5">
     <a href="#top" class="brand-mark" aria-label="Артём Момот — на главную">
-      <span class="brand-monogram" aria-hidden="true">AM</span>
-      <span class="brand-copy">
-        <strong>Артём Момот</strong>
-        <small>инженер AI-автоматизации</small>
+      <span class="brand-monogram">AM</span>
+      <span class="hidden sm:block">
+        <span class="block font-display text-[18px] font-semibold leading-tight text-text-main">Артём Момот</span>
+        <span class="block text-[11px] leading-tight text-text-muted">инженер AI-автоматизации</span>
       </span>
     </a>
 
-    <nav class="header-nav" aria-label="Основная навигация">
-      <a class="nav-link" href="#cases">Кейсы</a>
+    <nav class="hidden lg:flex items-center gap-7" aria-label="Основная навигация">
       <a class="nav-link" href="#expertise">Возможности</a>
+      <a class="nav-link" href="#cases">Кейсы</a>
       <a class="nav-link" href="#process">Подход</a>
       <a class="nav-link" href="#about">Обо мне</a>
     </nav>
 
-    <div class="header-actions">
-      <Button href="#contacts" variant="ghost" class="header-contact-button">
+    <div class="flex items-center gap-2">
+      <Button href="#contacts" variant="ghost" class="min-h-[42px] px-3 text-[13px] sm:px-4">
         Контакты
       </Button>
-      <Button href="#contacts" variant="primary" class="header-discuss-button">
+      <Button href="#contacts" variant="secondary" class="min-h-[42px] px-4 text-[13px] sm:px-5">
         Обсудить задачу
       </Button>
     </div>

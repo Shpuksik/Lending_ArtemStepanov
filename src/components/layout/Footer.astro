@@ -2,29 +2,29 @@
 import { contacts } from '../../config/content';
 ---
 
-<footer class="site-footer">
-  <div class="site-container footer-grid">
-    <div class="footer-brand">
-      <a href="#top" class="brand-mark" aria-label="Наверх">
-        <span class="brand-monogram" aria-hidden="true">AM</span>
-        <span class="brand-copy">
-          <strong>Артём Момот</strong>
-          <small>инженер AI-автоматизации</small>
+<footer class="border-t border-border/70 py-10 md:py-14">
+  <div class="site-container flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+    <div>
+      <a href="#top" class="brand-mark mb-4 inline-flex" aria-label="Наверх">
+        <span class="brand-monogram">AM</span>
+        <span>
+          <span class="block font-display text-[15px] font-semibold text-text-main">Артём Момот</span>
+          <span class="block text-xs text-text-muted">Инженер AI-автоматизации</span>
         </span>
       </a>
-      <p>
+      <p class="max-w-sm text-sm leading-relaxed text-text-muted">
         Проектирование и внедрение систем автоматизации заявок, клиентской поддержки, документов и операционных процессов.
       </p>
     </div>
 
-    <div class="footer-side">
-      <div class="footer-links">
+    <div class="flex flex-col items-start gap-4 md:items-end">
+      <div class="flex flex-wrap gap-x-6 gap-y-3">
         <a href={contacts.telegram} target="_blank" rel="noopener noreferrer" class="footer-link">Telegram</a>
         <a href={contacts.max} target="_blank" rel="noopener noreferrer" class="footer-link">MAX</a>
         <a href={contacts.vk} target="_blank" rel="noopener noreferrer" class="footer-link">VK</a>
         <a href={contacts.instagram} target="_blank" rel="noopener noreferrer" class="footer-link">Instagram</a>
       </div>
-      <div class="footer-copy">© {new Date().getFullYear()} Артём Момот</div>
+      <div class="text-xs text-text-muted">© {new Date().getFullYear()} Артём Момот</div>
     </div>
   </div>
 </footer>

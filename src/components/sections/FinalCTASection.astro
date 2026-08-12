@@ -2,34 +2,38 @@
 import { contacts } from '../../config/content';
 ---
 
-<section id="contacts" class="contacts-section">
+<section id="contacts" class="pb-12 pt-8 md:pb-20 md:pt-12">
   <div class="site-container">
-    <div class="contacts-shell">
-      <div class="contacts-content">
+    <div class="cta-shell" data-reveal-group>
+      <div class="cta-glow" aria-hidden="true"></div>
+      <div class="relative z-10 max-w-xl" data-reveal-item>
         <div class="section-kicker">Следующий шаг</div>
-        <h2>
+        <h2 class="font-display text-[36px] font-medium leading-[1.04] tracking-[-0.035em] text-text-main sm:text-[48px]">
           Разберём, где процесс можно сделать быстрее и надёжнее
         </h2>
-        <p class="contacts-lead">
+        <p class="mt-6 text-[16px] leading-[1.75] text-text-secondary">
           На первой встрече не нужно техническое задание. Достаточно описать, что команда делает вручную, где теряются заявки или какие вопросы повторяются каждый день.
         </p>
 
-        <div class="contact-links">
-          <a href={contacts.telegram} target="_blank" rel="noopener noreferrer"><span>Telegram</span><span>↗</span></a>
-          <a href={contacts.max} target="_blank" rel="noopener noreferrer"><span>MAX</span><span>↗</span></a>
-          <a href={contacts.vk} target="_blank" rel="noopener noreferrer"><span>VK</span><span>↗</span></a>
-          <a href={contacts.instagram} target="_blank" rel="noopener noreferrer"><span>Instagram</span><span>↗</span></a>
-          <a href={`tel:${contacts.phone.replace(/[^+\d]/g, '')}`}><span>{contacts.phone}</span><span>↗</span></a>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href={contacts.telegram} target="_blank" rel="noopener noreferrer" class="contact-pill contact-pill-primary">Telegram <span>↗</span></a>
+          <a href={contacts.max} target="_blank" rel="noopener noreferrer" class="contact-pill">MAX <span>↗</span></a>
+          <a href={contacts.vk} target="_blank" rel="noopener noreferrer" class="contact-pill">VK <span>↗</span></a>
+          <a href={contacts.instagram} target="_blank" rel="noopener noreferrer" class="contact-pill">Instagram <span>↗</span></a>
+          <a href={`tel:${contacts.phone.replace(/[^+\d]/g, '')}`} class="contact-pill">{contacts.phone}</a>
         </div>
 
-        <p class="contact-note">Обычно начинаем с 20–30 минут разговора о процессе.</p>
+        <div class="mt-9 flex items-center gap-3 text-xs text-text-muted">
+          <span class="status-dot"></span>
+          Обычно начинаем с 20–30 минут разговора о процессе
+        </div>
       </div>
 
-      <div class="callback-wrap">
+      <div class="relative z-10 w-full lg:max-w-[440px]" data-reveal-item>
         <form id="callback-form" class="callback-form" novalidate>
-          <div class="form-heading">
-            <div>Заказать обратный звонок</div>
-            <p>Оставьте номер и пару слов о задаче.</p>
+          <div class="mb-1">
+            <div class="font-display text-[22px] font-medium text-text-main">Заказать обратный звонок</div>
+            <p class="mt-2 text-xs leading-relaxed text-text-muted">Оставьте номер и пару слов о задаче.</p>
           </div>
 
           <input type="text" name="company" tabindex="-1" aria-hidden="true" class="absolute -z-10 h-0 w-0 opacity-0" autocomplete="off" />
@@ -50,13 +54,13 @@ import { contacts } from '../../config/content';
             <textarea id="message" name="message" rows="3" placeholder="Например: не успеваем обрабатывать заявки"></textarea>
           </div>
 
-          <button type="submit" class="button-base button-primary form-submit">
+          <button type="submit" class="button-base button-primary mt-1 w-full">
             <span>Жду звонка</span>
             <span aria-hidden="true">↗</span>
           </button>
 
-          <div id="form-status" class="hidden form-status" role="status" aria-live="polite"></div>
-          <p class="form-privacy">
+          <div id="form-status" class="hidden text-center text-sm" role="status" aria-live="polite"></div>
+          <p class="text-center text-[10px] leading-relaxed text-text-muted">
             Контакты используются только для связи по вашему запросу.
           </p>
         </form>
@@ -80,7 +84,7 @@ import { contacts } from '../../config/content';
 
     const showStatus = (message: string, isSuccess: boolean) => {
       statusDiv.textContent = message;
-      statusDiv.className = `form-status ${isSuccess ? 'is-success' : 'is-error'}`;
+      statusDiv.className = `block text-center text-sm ${isSuccess ? 'text-[#7ee2b8]' : 'text-[#ff8f99]'}`;
     };
 
     form.addEventListener('submit', async (event) => {
