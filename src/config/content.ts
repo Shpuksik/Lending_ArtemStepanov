@@ -2,7 +2,7 @@ export const contacts = {
   telegram: "https://t.me/momot_artem",
   max: "https://max.ru/u/f9LHodD0cOJ9oEbreWXLXbEEVU5O8NVj8hdw2LP4kZQagxnpCk_xXLkkWxs",
   vk: "https://vk.ru/momot.artem",
-  instagram: "https://www.instagram.com/momot.artem/",
+  instagram: "https://www.instagram.com/mr.artem.momot",
   phone: "+7 982 815 47 79"
 };
 
@@ -143,7 +143,7 @@ export const processSteps = [
 
 export const about = {
   eyebrow: "Обо мне",
-  title: "Инженерный подход вместо гонки за модными инструментами",
+  title: "Почему я начинаю с процесса, а не с инструментов",
   text: [
     "Я 15 лет работал инженером-технологом в нефтегазовой отрасли — там, где сложные процессы должны быть понятными, проверяемыми и устойчивыми к ошибкам.",
     "В AI-автоматизации применяю ту же логику: сначала разбираюсь в реальном процессе, затем выбираю инструменты и довожу решение до предсказуемой работы. Технология для меня — не витрина, а способ снять конкретное ограничение бизнеса."
