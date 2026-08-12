@@ -2,28 +2,27 @@
 import { processSteps } from '../../config/content';
 ---
 
-<section id="process" class="section-space">
+<section id="process" class="section-space process-section">
   <div class="site-container">
-    <div class="section-intro" data-reveal>
-      <div class="section-kicker">Этапы работы</div>
-      <h2 class="section-title">Как проходит работа над проектом</h2>
+    <div class="section-heading split-heading">
+      <div>
+        <div class="section-kicker">Подход</div>
+        <h2 class="section-title">Как проходит работа над проектом</h2>
+      </div>
       <p class="section-lead">
         Сначала разбираемся в задаче и текущем процессе. Затем проектируем решение, проверяем его на реальных сценариях и только после этого запускаем.
       </p>
     </div>
 
-    <div class="process-grid mt-14" data-reveal-group>
-      {processSteps.map((step, index) => (
-        <article class="process-card" data-reveal-item>
-          <div class="flex items-center gap-4">
-            <span class="process-number">{step.number}</span>
-            {index < processSteps.length - 1 && <div class="process-line hidden lg:block" aria-hidden="true"><span></span></div>}
-          </div>
-          <h3 class="mt-7 font-display text-[22px] font-medium text-text-main">{step.title}</h3>
-          <p class="mt-4 text-sm leading-[1.7] text-text-secondary">{step.description}</p>
-          <div class="mt-6 border-t border-border/60 pt-5 text-xs leading-relaxed text-text-muted">
-            <span class="mb-1 block uppercase tracking-[0.14em] text-accent">На выходе</span>
-            {step.deliverable}
+    <div class="process-list">
+      {processSteps.map((step) => (
+        <article class="process-row">
+          <span class="row-number">{step.number}</span>
+          <h3>{step.title}</h3>
+          <p>{step.description}</p>
+          <div class="process-deliverable">
+            <span>На выходе</span>
+            <strong>{step.deliverable}</strong>
           </div>
         </article>
       ))}
