@@ -1,6 +1,5 @@
 ---
 import '../styles/globals.css';
-import ScrollReveal from '../components/motion/ScrollReveal.astro';
 
 interface Props {
   title: string;
@@ -31,7 +30,7 @@ const structuredData = {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#080b0f" />
+    <meta name="theme-color" content="#f1efe8" />
     <link rel="canonical" href={canonicalUrl} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -49,13 +48,12 @@ const structuredData = {
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
     <meta name="generator" content={Astro.generator} />
   </head>
   <body class="min-h-screen overflow-x-hidden">
     <a class="skip-link" href="#main-content">Перейти к содержанию</a>
     <slot />
-    <ScrollReveal />
   </body>
 </html>
