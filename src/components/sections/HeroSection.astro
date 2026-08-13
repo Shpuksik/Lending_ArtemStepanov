@@ -4,11 +4,7 @@ import { hero, proofPoints } from '../../config/content';
 ---
 
 <section id="top" class="hero-section relative overflow-hidden border-b border-border/60">
-  <div class="hero-grid" aria-hidden="true"></div>
-  <div class="hero-orb hero-orb-one" aria-hidden="true"></div>
-  <div class="hero-orb hero-orb-two" aria-hidden="true"></div>
-
-  <div class="site-container relative z-10 grid min-h-[720px] items-center gap-14 py-20 lg:grid-cols-[1.08fr_0.92fr] lg:gap-16 lg:py-24">
+  <div class="site-container hero-main-grid relative z-10 grid min-h-[720px] items-center gap-14 py-20 lg:grid-cols-[1.08fr_0.92fr] lg:gap-16 lg:py-24">
     <div class="max-w-[760px]" data-reveal-group>
       <h1 data-reveal-item class="font-display text-[42px] font-medium leading-[0.98] tracking-[-0.045em] text-text-main sm:text-[56px] lg:text-[72px]">
         <span class="block">{hero.h1}</span>
@@ -34,65 +30,23 @@ import { hero, proofPoints } from '../../config/content';
       </div>
     </div>
 
-    <div class="relative mx-auto w-full max-w-[540px] lg:mx-0" data-reveal>
-      <div class="system-panel">
-        <div class="flex items-center justify-between border-b border-border/70 px-5 py-4">
-          <div>
-            <div class="text-[10px] uppercase tracking-[0.2em] text-text-muted">Операционный контур</div>
-            <div class="mt-1 font-display text-sm font-medium text-text-main">Заявка → решение → контроль</div>
-          </div>
-        </div>
-
-        <div class="p-5 sm:p-7">
-          <div class="system-row">
-            <div class="system-label">Входящие каналы</div>
-            <div class="grid grid-cols-3 gap-2">
-              <div class="system-node">Сайт</div>
-              <div class="system-node">MAX</div>
-              <div class="system-node">Авито</div>
-            </div>
-          </div>
-
-          <div class="system-connector" aria-hidden="true"><span></span></div>
-
-          <div class="system-core">
-            <div class="core-glow" aria-hidden="true"></div>
-            <div class="relative z-10 flex items-start justify-between gap-4">
-              <div>
-                <div class="text-[10px] uppercase tracking-[0.18em] text-accent">AI + бизнес-логика</div>
-                <div class="mt-2 font-display text-lg font-medium text-text-main">Обработка процесса</div>
-              </div>
-              <div class="core-icon" aria-hidden="true">
-                <span></span><span></span><span></span>
-              </div>
-            </div>
-            <div class="relative z-10 mt-5 grid grid-cols-3 gap-2 text-center text-[10px] text-text-secondary">
-              <div class="rounded-md border border-white/5 bg-black/15 px-2 py-2">Проверка</div>
-              <div class="rounded-md border border-white/5 bg-black/15 px-2 py-2">Решение</div>
-              <div class="rounded-md border border-white/5 bg-black/15 px-2 py-2">Маршрут</div>
-            </div>
-          </div>
-
-          <div class="system-connector" aria-hidden="true"><span></span></div>
-
-          <div class="system-row">
-            <div class="system-label">Результат в рабочих системах</div>
-            <div class="grid grid-cols-3 gap-2">
-              <div class="system-node system-node-output">CRM</div>
-              <div class="system-node system-node-output">Менеджер</div>
-              <div class="system-node system-node-output">Отчёт</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="system-log border-t border-border/70 px-5 py-3">
-          <span class="text-text-muted">10:42:18</span>
-          <span class="text-[#88e5bd]">Процесс выполнен</span>
-          <span class="ml-auto text-text-muted">1.8 сек</span>
-        </div>
+    <figure class="hero-portrait mx-auto w-full max-w-[500px] lg:mx-0" data-reveal>
+      <div class="portrait-frame hero-portrait-frame">
+        <img
+          src="/images/artem-stepanov-about-4x5-gradient.webp"
+          alt="Артём Момот — инженер AI-автоматизации"
+          width="896"
+          height="1120"
+          fetchpriority="high"
+          decoding="async"
+          class="h-full w-full object-cover"
+        />
       </div>
-      <div class="absolute -bottom-6 -right-4 -z-10 h-40 w-40 rounded-full bg-accent/10 blur-[70px]" aria-hidden="true"></div>
-    </div>
+      <div class="portrait-badge hero-portrait-badge">
+        <span class="font-display text-[28px] font-semibold text-text-main">15</span>
+        <span class="text-[11px] leading-tight text-text-muted">лет работы<br />со сложными процессами</span>
+      </div>
+    </figure>
   </div>
 
   <div class="site-container relative z-10 pb-9">

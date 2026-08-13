@@ -5,7 +5,6 @@ import { contacts } from '../../config/content';
 <section id="contacts" class="pb-12 pt-8 md:pb-20 md:pt-12">
   <div class="site-container">
     <div class="cta-shell" data-reveal-group>
-      <div class="cta-glow" aria-hidden="true"></div>
       <div class="relative z-10 max-w-xl" data-reveal-item>
         <div class="section-kicker">Следующий шаг</div>
         <h2 class="font-display text-[36px] font-medium leading-[1.04] tracking-[-0.035em] text-text-main sm:text-[48px]">
@@ -23,8 +22,7 @@ import { contacts } from '../../config/content';
           <a href={`tel:${contacts.phone.replace(/[^+\d]/g, '')}`} class="contact-pill">{contacts.phone}</a>
         </div>
 
-        <div class="mt-9 flex items-center gap-3 text-xs text-text-muted">
-          <span class="status-dot"></span>
+        <div class="conversation-note mt-9 flex items-center gap-3 text-xs text-text-muted">
           Обычно начинаем с 20–30 минут разговора о процессе
         </div>
       </div>

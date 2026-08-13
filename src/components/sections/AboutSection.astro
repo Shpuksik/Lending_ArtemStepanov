@@ -3,27 +3,8 @@ import { about } from '../../config/content';
 ---
 
 <section id="about" class="section-space border-y border-border/60 bg-surface/45">
-  <div class="site-container grid items-center gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:gap-20">
-    <div class="relative mx-auto w-full max-w-[470px] lg:mx-0" data-reveal>
-      <div class="portrait-frame">
-        <div class="portrait-lines" aria-hidden="true"></div>
-        <img
-          src="/images/artem-stepanov-about-4x5-gradient.webp"
-          alt="Артём Момот — инженер AI-автоматизации"
-          width="896"
-          height="1120"
-          loading="lazy"
-          decoding="async"
-          class="relative z-10 h-full w-full object-cover"
-        />
-      </div>
-      <div class="portrait-badge">
-        <span class="font-display text-[28px] font-semibold text-text-main">15</span>
-        <span class="text-[11px] leading-tight text-text-muted">лет работы<br />со сложными процессами</span>
-      </div>
-    </div>
-
-    <div data-reveal-group>
+  <div class="site-container">
+    <div class="max-w-[920px]" data-reveal-group>
       <div data-reveal-item class="section-kicker">{about.eyebrow}</div>
       <h2 data-reveal-item class="section-title max-w-[760px]">{about.title}</h2>
       <div data-reveal-item class="mt-7 max-w-[720px] space-y-5 text-[16px] leading-[1.8] text-text-secondary">
@@ -38,7 +19,6 @@ import { about } from '../../config/content';
           </div>
         ))}
       </div>
-
     </div>
   </div>
 </section>

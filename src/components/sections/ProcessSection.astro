@@ -17,7 +17,7 @@ import { processSteps } from '../../config/content';
         <article class="process-card" data-reveal-item>
           <div class="flex items-center gap-4">
             <span class="process-number">{step.number}</span>
-            {index < processSteps.length - 1 && <div class="process-line hidden lg:block" aria-hidden="true"><span></span></div>}
+            {index < processSteps.length - 1 && <div class="process-line hidden lg:block" aria-hidden="true"></div>}
           </div>
           <h3 class="mt-7 font-display text-[22px] font-medium text-text-main">{step.title}</h3>
           <p class="mt-4 text-sm leading-[1.7] text-text-secondary">{step.description}</p>
