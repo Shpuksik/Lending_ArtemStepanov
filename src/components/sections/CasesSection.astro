@@ -21,6 +21,7 @@ const compactCases = cases.filter((item) => !item.featured);
       {featuredCases.map((item, index) => (
         <article class="case-study" data-reveal-item>
           <div class={`case-visual ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
+            <div class="case-visual-grid" aria-hidden="true"></div>
             <div class="relative z-10 flex h-full flex-col">
               <div class="flex items-center justify-between">
                 <span class="text-[10px] font-semibold uppercase tracking-[0.18em] text-accent">Схема процесса</span>
@@ -32,10 +33,11 @@ const compactCases = cases.filter((item) => !item.featured);
                   {item.flow?.map((node, flowIndex) => (
                     <>
                       <div class={`case-flow-node ${flowIndex === 1 ? 'case-flow-node-core' : ''}`}>
+                        {flowIndex === 1 && <span class="case-flow-pulse" aria-hidden="true"></span>}
                         <span class="relative z-10">{node}</span>
                       </div>
                       {flowIndex < (item.flow?.length || 0) - 1 && (
-                        <div class="case-flow-line" aria-hidden="true"></div>
+                        <div class="case-flow-line" aria-hidden="true"><span></span></div>
                       )}
                     </>
                   ))}
@@ -43,7 +45,7 @@ const compactCases = cases.filter((item) => !item.featured);
               </div>
 
               <div class="flex items-center gap-2 text-[11px] text-text-muted">
-                <span class="case-status-mark" aria-hidden="true"></span>
+                <span class="h-1.5 w-1.5 rounded-full bg-[#65d8a7] shadow-[0_0_10px_rgba(101,216,167,0.7)]"></span>
                 Рабочий сценарий
               </div>
             </div>
