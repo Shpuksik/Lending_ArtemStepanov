@@ -275,6 +275,18 @@ summary:focus-visible {
   backdrop-filter: none;
 }
 
+.case-visual-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(90, 215, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(90, 215, 255, 0.045) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.7;
+  mask-image: radial-gradient(circle at 50% 52%, black, transparent 78%);
+  -webkit-mask-image: radial-gradient(circle at 50% 52%, black, transparent 78%);
+}
+
 .scope-chip,
 .mini-chip {
   display: inline-flex;
@@ -513,7 +525,9 @@ summary:focus-visible {
   min-height: 440px;
   overflow: hidden;
   border-right: 1px solid rgba(39, 50, 61, 0.72);
-  background: linear-gradient(145deg, #101820, #0b1117);
+  background:
+    radial-gradient(circle at 50% 50%, rgba(90, 215, 255, 0.105), transparent 52%),
+    #0b1117;
   padding: 28px;
 }
 
@@ -551,22 +565,37 @@ summary:focus-visible {
 }
 
 .case-flow-node-core {
-  border-color: rgba(90, 215, 255, 0.3);
-  background: rgba(22, 49, 60, 0.82);
+  border-color: rgba(90, 215, 255, 0.42);
+  background: rgba(24, 64, 78, 0.82);
   color: #dff8ff;
+  box-shadow: 0 0 40px rgba(90, 215, 255, 0.08);
+}
+
+.case-flow-pulse {
+  position: absolute;
+  inset: -1px;
+  border: 1px solid rgba(90, 215, 255, 0.42);
+  border-radius: 10px;
+  animation: core-pulse 2.8s ease-out infinite;
 }
 
 .case-flow-line {
+  position: relative;
   width: 42px;
   height: 1px;
-  background: rgba(106, 126, 143, 0.5);
+  overflow: hidden;
+  background: rgba(90, 215, 255, 0.2);
 }
 
-.case-status-mark {
-  width: 16px;
+.case-flow-line span {
+  position: absolute;
+  top: 0;
+  left: -12px;
+  width: 12px;
   height: 1px;
-  flex: 0 0 auto;
-  background: rgba(111, 137, 156, 0.9);
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  animation: horizontal-flow 2.3s linear infinite;
 }
 
 .case-content {
@@ -937,6 +966,16 @@ details[open] summary ~ * {
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes horizontal-flow {
+  from { transform: translateX(0); }
+  to { transform: translateX(70px); }
+}
+
+@keyframes core-pulse {
+  0% { opacity: 0.5; transform: scale(1); }
+  75%, 100% { opacity: 0; transform: scale(1.12); }
+}
+
 @media (min-width: 768px) {
   .site-container {
     padding-inline: 30px;
@@ -1002,7 +1041,7 @@ details[open] summary ~ * {
   }
 
   .hero-portrait {
-    max-width: 420px;
+    max-width: min(100%, 420px);
   }
 
   .hero-portrait-frame {
@@ -1011,6 +1050,10 @@ details[open] summary ~ * {
 
   .hero-portrait-frame img {
     object-position: 50% 28%;
+  }
+
+  .hero-portrait-badge {
+    max-width: calc(100% - 20px);
   }
 
   .proof-strip {
